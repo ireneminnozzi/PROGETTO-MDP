@@ -1,0 +1,26 @@
+package it.unicam.cs.mpgc.rpg130957.model.economy;
+
+//Gestisce l’oro del giocatore
+
+public class Wallet {
+
+    private int gold;
+
+    public Wallet(int gold) {
+        this.gold = gold;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public boolean spend(int amount) {
+        if (gold < amount) return false;
+        gold -= amount;
+        return true;
+    }
+
+    public void earn(int amount) {
+        gold += amount;
+    }
+}
