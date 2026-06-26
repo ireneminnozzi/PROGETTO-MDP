@@ -1,4 +1,29 @@
 package it.unicam.cs.mpgc.rpg130957.model.crafting;
 
+import it.unicam.cs.mpgc.rpg130957.model.Inventario;
+import it.unicam.cs.mpgc.rpg130957.model.items.Ingredient;
+import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
+
+//Logica del crafting: controlla se l’inventario ha gli ingredienti, li rimuove, restituisce la pozione
+
 public class Cauldron {
+
+    public Potion craft(Recipe recipe, Inventario inventario) {
+
+        for (var entry : recipe.getIngredienti().entrySet()) {
+            Ingredient ing = entry.getKey();
+            int qta = entry.getValue();
+
+            if (inventario.getQuantita(ing) < qta) {
+                return null;
+            }
+        }
+
+        for (var entry : recipe.getIngredienti().entrySet()) {
+            inventario.rimuoviIngrediente(entry.getKey(), entry.getValue());
+        }
+
+        return recipe.getRisultato();
+    }
 }
+

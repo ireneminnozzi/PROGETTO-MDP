@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130957.model;
+package it.unicam.cs.mpgc.rpg130957.model.economy;
 
 //Gestisce l’oro del giocatore
 

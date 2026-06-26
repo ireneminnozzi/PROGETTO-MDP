@@ -1,6 +1,4 @@
-package it.unicam.cs.mpgc.rpg130957.model;
-
-import it.unicam.cs.mpgc.rpg130957.model.items.*;
+package it.unicam.cs.mpgc.rpg130957.model.items;
 
 import java.util.List;
 
