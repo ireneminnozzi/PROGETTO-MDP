@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.model.quest;
 
 import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 
 //Gestisce la quest attiva, verifica il completamento e assegna ricompense.
 

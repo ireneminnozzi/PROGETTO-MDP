@@ -1,10 +1,10 @@
 package it.unicam.cs.mpgc.rpg130957.model.player;
 
-import it.unicam.cs.mpgc.rpg130957.model.Inventario.Inventario;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
+import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.combat.Enemy;
-import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 
 public class Player {
 
@@ -75,4 +75,3 @@ public class Player {
         System.out.println("✨ Hai raggiunto il livello " + livello + "!");
     }
 }
-

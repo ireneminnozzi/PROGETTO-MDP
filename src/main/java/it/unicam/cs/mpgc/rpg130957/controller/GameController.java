@@ -1,5 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
 import it.unicam.cs.mpgc.rpg130957.model.forest.ForestMap;
 import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;

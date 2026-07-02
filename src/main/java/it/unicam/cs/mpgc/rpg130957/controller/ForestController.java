@@ -1,8 +1,8 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
 import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;
-import it.unicam.cs.mpgc.rpg130957.model.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.loot.EnemyLootTable;
@@ -33,12 +33,32 @@ public class ForestController {
     }
 
     public boolean raccogliRisorsa() {
+
         if (posizione.getRisorse().isEmpty()) return false;
 
-        Item item = posizione.getRisorse().remove(0);
-        inventario.aggiungiIngrediente(item, 1);
+        Item erba = posizione.getRisorse().get(0);
+
+        EnemyType guardiano = it.unicam.cs.mpgc.rpg130957.model.forest.HerbGuardians.getGuardiano(erba);
+
+        if (guardiano != null) {
+            Enemy nemico = posizione.getNemici().stream()
+                    .filter(e -> e.getTipo() == guardiano)
+                    .findFirst()
+                    .orElse(null);
+
+            if (nemico != null) {
+                boolean vinto = CombatSystem.combatti(nemico, it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry.BASTONE_MAGICO);
+                if (!vinto) return false;
+                posizione.getNemici().remove(nemico);
+            }
+        }
+
+        posizione.getRisorse().remove(erba);
+        inventario.aggiungiIngrediente(erba, 1);
+
         return true;
     }
+
 
     public boolean combattiNemico(Weapon arma) {
         if (posizione.getNemici().isEmpty()) return false;

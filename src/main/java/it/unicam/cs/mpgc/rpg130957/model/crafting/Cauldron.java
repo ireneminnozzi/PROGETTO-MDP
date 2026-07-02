@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.crafting;
 
-import it.unicam.cs.mpgc.rpg130957.model.Inventario;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Ingredient;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 

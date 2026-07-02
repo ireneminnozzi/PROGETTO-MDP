@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Cauldron;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 

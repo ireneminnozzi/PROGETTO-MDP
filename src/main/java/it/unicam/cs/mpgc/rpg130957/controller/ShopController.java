@@ -1,7 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
-import it.unicam.cs.mpgc.rpg130957.model.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 
 //Logica del negozio: compra, vendi, aggiorna inventario e wallet
