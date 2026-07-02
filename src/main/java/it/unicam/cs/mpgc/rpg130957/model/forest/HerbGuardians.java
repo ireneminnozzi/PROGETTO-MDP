@@ -18,4 +18,5 @@ public class HerbGuardians {
     public static EnemyType getGuardiano(Object erba) {
         return GUARDIANI.get(erba);
     }
+
 }
