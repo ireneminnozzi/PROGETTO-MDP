@@ -7,18 +7,22 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.loot.EnemyLootTable;
 import it.unicam.cs.mpgc.rpg130957.model.loot.LootSystem;
+import it.unicam.cs.mpgc.rpg130957.model.player.Player;
 
 //ForestController gestisce l’esperienza della strega nel bosco.
 
 public class ForestController {
 
     private ForestArea posizione;
-    private Inventario inventario;   //  AGGIUNTO
+    private Inventario inventario;
+    private final Player player; //  AGGIUNTO
 
-    public ForestController(ForestArea start, Inventario inventario) {
+    public ForestController(ForestArea start, Inventario inventario, Player player) {
         this.posizione = start;
-        this.inventario = inventario;   // ️ SALVATO
+        this.inventario = inventario;
+        this.player = player;
     }
+
 
     public ForestArea getPosizione() {
         return posizione;

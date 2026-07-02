@@ -8,10 +8,9 @@ import it.unicam.cs.mpgc.rpg130957.model.crafting.Cauldron;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
+import it.unicam.cs.mpgc.rpg130957.model.player.Player;
 import it.unicam.cs.mpgc.rpg130957.model.quest.Quest;
 import it.unicam.cs.mpgc.rpg130957.model.quest.QuestManager;
-
-//Coordina tutti i sistemi: bosco, shop, crafting, quest, inventario e wallet.
 
 public class GameController {
 
@@ -22,18 +21,23 @@ public class GameController {
     private final ShopController shopController;
     private final CraftingController craftingController;
     private final QuestManager questManager;
+    private final Player player;
 
     public GameController() {
+        this.player = new Player("wiccan");
         this.inventario = new Inventario();
-        this.wallet = new Wallet(50); // oro iniziale
+        this.wallet = new Wallet(50);
         this.mappa = new ForestMap();
-        this.forestController = new ForestController(mappa.getStartArea(), inventario);
+        this.forestController = new ForestController(mappa.getStartArea(), inventario, player);
         this.shopController = new ShopController(inventario, wallet);
-        this.craftingController = new CraftingController(inventario, new Cauldron());
+        this.craftingController = new CraftingController(inventario, new Cauldron(), player);
         this.questManager = new QuestManager();
     }
 
-    // BOSCO
+    public Player getPlayer() {
+        return player;
+    }
+
     public ForestArea getPosizione() {
         return forestController.getPosizione();
     }
@@ -50,7 +54,6 @@ public class GameController {
         return forestController.combattiNemico(arma);
     }
 
-    // SHOP
     public boolean compra(Item item, int quantita) {
         return shopController.compra(item, quantita);
     }
@@ -59,7 +62,6 @@ public class GameController {
         return shopController.vendi(item, quantita);
     }
 
-    // CRAFTING
     public boolean puoiCraftare(Recipe recipe) {
         return craftingController.puoiCraftare(recipe);
     }
@@ -68,7 +70,6 @@ public class GameController {
         return craftingController.craft(recipe) != null;
     }
 
-    // QUEST
     public void assegnaQuest(Quest quest) {
         questManager.assegnaQuest(quest);
     }
@@ -77,7 +78,6 @@ public class GameController {
         return questManager.completaQuest(inventario, wallet);
     }
 
-    // INFO
     public Inventario getInventario() {
         return inventario;
     }
