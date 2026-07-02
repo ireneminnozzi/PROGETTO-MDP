@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130957.model;
+package it.unicam.cs.mpgc.rpg130957.model.Inventario;
 
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import java.util.HashMap;

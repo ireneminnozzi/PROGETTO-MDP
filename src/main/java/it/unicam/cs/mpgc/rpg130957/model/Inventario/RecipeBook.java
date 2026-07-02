@@ -1,4 +1,4 @@
-package it.unicam.cs.mpgc.rpg130957.model;
+package it.unicam.cs.mpgc.rpg130957.model.Inventario;
 
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
