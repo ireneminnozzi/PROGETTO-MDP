@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
-import it.unicam.cs.mpgc.rpg130957.model.Inventario.Inventario;
+import it.unicam.cs.mpgc.rpg130957.model.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 
