@@ -1,21 +1,31 @@
 package it.unicam.cs.mpgc.rpg130957.model.loot;
 
-import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
+import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 
-//Genera item casuali basati su probabilità.
+import java.util.Random;
 
 public class LootSystem {
 
+    private static final Random rnd = new Random();
+
     public static Item dropCasuale() {
-        double r = Math.random();
 
-        if (r < 0.50) return ItemRegistry.ERBA_MAGICA;
-        if (r < 0.75) return ItemRegistry.MANDRAGORA;
-        if (r < 0.90) return ItemRegistry.FIORE_LUNARE;
-        if (r < 0.98) return ItemRegistry.CRISTALLO_ARCANO;
-        return ItemRegistry.ESSENZA_DRAGO;
+        int roll = rnd.nextInt(100);
+
+        if (roll < 50) {
+            return ItemRegistry.ERBA_MAGICA; // comune
+        }
+        if (roll < 75) {
+            return ItemRegistry.FUNGHI_SPETTRALI; // non comune
+        }
+        if (roll < 90) {
+            return ItemRegistry.PETALO_ROSA_NERA; // raro
+        }
+        if (roll < 98) {
+            return ItemRegistry.CRISTALLO_ARCANO; // epico
+        }
+
+        return ItemRegistry.LACRIMA_FENICE; // leggendario
     }
-
 }
-

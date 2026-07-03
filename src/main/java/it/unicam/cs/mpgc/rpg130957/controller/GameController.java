@@ -10,6 +10,7 @@ import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
 import it.unicam.cs.mpgc.rpg130957.model.quest.QuestAvanzata;
+import it.unicam.cs.mpgc.rpg130957.model.quest.QuestFinale;
 import it.unicam.cs.mpgc.rpg130957.model.quest.QuestManager;
 
 public class GameController {
@@ -94,6 +95,11 @@ public class GameController {
     public boolean completaQuest() {
         return questManager.completaQuest(inventario, wallet);
     }
+
+    public void assegnaQuestFinale() {
+        questManager.assegnaQuest(QuestFinale.creaQuestFinale());
+    }
+
 
     public Inventario getInventario() {
         return inventario;

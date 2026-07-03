@@ -1,10 +1,10 @@
 package it.unicam.cs.mpgc.rpg130957.model.player;
 
 import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
-import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
-import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.combat.Enemy;
+import it.unicam.cs.mpgc.rpg130957.model.magic.Spell;
+import it.unicam.cs.mpgc.rpg130957.model.skills.SkillTree;
 
 public class Player {
 
@@ -24,7 +24,6 @@ public class Player {
         this.inventario = new Inventario();
     }
 
-    // --- STATISTICHE ---
     public String getNome() { return nome; }
     public int getSalute() { return salute; }
     public int getMana() { return mana; }
@@ -36,28 +35,16 @@ public class Player {
         return salute > 0;
     }
 
-    // --- RACCOLTA ---
-    public void raccogli(Item item) {
-        inventario.aggiungiIngrediente(item, 1);
+    public void subisciDanno(int danno) {
+        salute -= danno;
+        if (salute < 0) salute = 0;
     }
 
-    // --- POZIONI ---
     public void usaPozione(Potion p) {
-        // qui potresti usare descrizione/rarità per effetti diversi
         salute += 20;
         mana += 10;
     }
 
-    // --- COMBATTIMENTO ---
-    public void attacca(Enemy enemy, Weapon arma) {
-        int danno = arma.getDanno() + (livello * 2);
-        enemy.subisciDanno(danno);
-        if (enemy.isSconfitto()) {
-            guadagnaXP(20);
-        }
-    }
-
-    // --- LIVELLI ---
     public void guadagnaXP(int xp) {
         esperienza += xp;
         if (esperienza >= esperienzaNecessaria) {
@@ -72,6 +59,29 @@ public class Player {
 
         salute += 20;
         mana += 10;
+
         System.out.println("✨ Hai raggiunto il livello " + livello + "!");
     }
+
+    public boolean puoLanciare(Spell spell) {
+        return mana >= spell.getCostoMana();
+    }
+
+    public void lancia(Spell spell, Enemy enemy) {
+        if (!puoLanciare(spell)) {
+            System.out.println("Non hai abbastanza mana per " + spell.getNome());
+            return;
+        }
+        mana -= spell.getCostoMana();
+        enemy.subisciDanno(spell.getDanno() + livello * 2);
+        System.out.println("Hai lanciato " + spell.getNome() + "!");
+    }
+
+    private final SkillTree skillTree = new SkillTree();
+
+    public SkillTree getSkillTree() {
+        return skillTree;
+    }
+
+
 }
