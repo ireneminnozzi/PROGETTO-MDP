@@ -9,7 +9,7 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
-import it.unicam.cs.mpgc.rpg130957.model.quest.Quest;
+import it.unicam.cs.mpgc.rpg130957.model.quest.QuestAvanzata;
 import it.unicam.cs.mpgc.rpg130957.model.quest.QuestManager;
 
 public class GameController {
@@ -24,18 +24,35 @@ public class GameController {
     private final Player player;
 
     public GameController() {
+
         this.player = new Player("wiccan");
         this.inventario = new Inventario();
         this.wallet = new Wallet(50);
         this.mappa = new ForestMap();
-        this.forestController = new ForestController(mappa.getStartArea(), inventario, player);
-        this.shopController = new ShopController(inventario, wallet);
-        this.craftingController = new CraftingController(inventario, new Cauldron(), player);
         this.questManager = new QuestManager();
+
+        this.forestController = new ForestController(
+                mappa.getStartArea(),
+                inventario,
+                player,
+                questManager
+        );
+
+        this.shopController = new ShopController(inventario, wallet);
+
+        this.craftingController = new CraftingController(
+                inventario,
+                new Cauldron(),
+                player
+        );
     }
 
     public Player getPlayer() {
         return player;
+    }
+
+    public QuestManager getQuestManager() {
+        return questManager;
     }
 
     public ForestArea getPosizione() {
@@ -70,7 +87,7 @@ public class GameController {
         return craftingController.craft(recipe) != null;
     }
 
-    public void assegnaQuest(Quest quest) {
+    public void assegnaQuest(QuestAvanzata quest) {
         questManager.assegnaQuest(quest);
     }
 

@@ -8,21 +8,21 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.loot.EnemyLootTable;
 import it.unicam.cs.mpgc.rpg130957.model.loot.LootSystem;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
-
-//ForestController gestisce l’esperienza della strega nel bosco.
+import it.unicam.cs.mpgc.rpg130957.model.quest.QuestManager;
 
 public class ForestController {
 
     private ForestArea posizione;
-    private Inventario inventario;
-    private final Player player; //  AGGIUNTO
+    private final Inventario inventario;
+    private final Player player;
+    private final QuestManager questManager;
 
-    public ForestController(ForestArea start, Inventario inventario, Player player) {
+    public ForestController(ForestArea start, Inventario inventario, Player player, QuestManager questManager) {
         this.posizione = start;
         this.inventario = inventario;
         this.player = player;
+        this.questManager = questManager;
     }
-
 
     public ForestArea getPosizione() {
         return posizione;
@@ -51,29 +51,32 @@ public class ForestController {
                     .orElse(null);
 
             if (nemico != null) {
-                boolean vinto = CombatSystem.combatti(nemico, it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry.BASTONE_MAGICO);
+                boolean vinto = CombatSystem.combatti(nemico, it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry.BASTONE_MAGICO, player);
                 if (!vinto) return false;
                 posizione.getNemici().remove(nemico);
+                questManager.progressoCombattimento(nemico.getTipo());
             }
         }
 
         posizione.getRisorse().remove(erba);
         inventario.aggiungiIngrediente(erba, 1);
+        questManager.progressoRaccolta(erba);
 
         return true;
     }
-
 
     public boolean combattiNemico(Weapon arma) {
         if (posizione.getNemici().isEmpty()) return false;
 
         Enemy enemy = posizione.getNemici().get(0);
 
-        boolean vinto = CombatSystem.combatti(enemy, arma);
+        boolean vinto = CombatSystem.combatti(enemy, arma, player);
 
         if (vinto) {
             posizione.getNemici().remove(enemy);
-            ottieniLoot(enemy);   // ✔️ LOOT DOPO LA VITTORIA
+            ottieniLoot(enemy);
+            player.guadagnaXP(20);
+            questManager.progressoCombattimento(enemy.getTipo());
         }
 
         return vinto;
@@ -81,7 +84,7 @@ public class ForestController {
 
     private void ottieniLoot(Enemy enemy) {
         Item dropFisso = EnemyLootTable.getLoot(enemy.getTipo());
-        Item dropBonus = LootSystem.dropCasuale(); // o dropBonus()
+        Item dropBonus = LootSystem.dropCasuale();
 
         inventario.aggiungiIngrediente(dropFisso, 1);
 

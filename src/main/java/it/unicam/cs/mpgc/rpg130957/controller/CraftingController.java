@@ -6,8 +6,6 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
 
-//Logica del crafting: controlla se puoi craftare, crafta tramite Cauldron
-
 public class CraftingController {
 
     private final Inventario inventario;
@@ -32,5 +30,4 @@ public class CraftingController {
         }
         return p;
     }
-
 }
