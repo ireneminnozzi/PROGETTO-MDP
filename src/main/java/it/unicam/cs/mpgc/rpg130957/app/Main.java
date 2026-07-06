@@ -13,8 +13,14 @@ import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;
 import it.unicam.cs.mpgc.rpg130957.model.player.PlayerHUD;
 import it.unicam.cs.mpgc.rpg130957.model.quest.*;
 import it.unicam.cs.mpgc.rpg130957.model.skills.SkillRegistry;
+import it.unicam.cs.mpgc.rpg130957.persistence.json.GameState;
+import it.unicam.cs.mpgc.rpg130957.persistence.json.SaveManager;
+import it.unicam.cs.mpgc.rpg130957.persistence.json.LoadManager;
 
+
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 public class Main {
@@ -239,6 +245,36 @@ public class Main {
                 case 14:
                     player.getSkillTree().mostra();
                     break;
+
+                case 15:
+                    Map<String, Integer> invMap = new HashMap<>();
+                    game.getInventario().getTutti().forEach((item, qty) -> invMap.put(item.getNome(), qty));
+
+                    GameState state = new GameState(
+                            player.getSalute(),
+                            player.getMana(),
+                            player.getLivello(),
+                            player.getEsperienza(),
+                            invMap,
+                            game.getPosizione().getNome()
+                    );
+
+                    SaveManager.salva(state);
+                    break;
+
+                case 16:
+                    GameState loaded = LoadManager.carica();
+                    if (loaded != null) {
+                        System.out.println("=== SALVATAGGIO CARICATO ===");
+                        System.out.println("Salute: " + loaded.salute);
+                        System.out.println("Mana: " + loaded.mana);
+                        System.out.println("Livello: " + loaded.livello);
+                        System.out.println("XP: " + loaded.esperienza);
+                        System.out.println("Inventario: " + loaded.inventario);
+                        System.out.println("Posizione: " + loaded.posizione);
+                    }
+                    break;
+
 
 
 
