@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.model.skills;
 
+import it.unicam.cs.mpgc.rpg130957.model.skills.*;
+
 public class Skill {
 
     private final String nome;
@@ -12,4 +14,7 @@ public class Skill {
 
     public String getNome() { return nome; }
     public String getDescrizione() { return descrizione; }
+
+
+
 }
