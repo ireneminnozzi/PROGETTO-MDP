@@ -1,17 +1,19 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
-import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
-import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
-import it.unicam.cs.mpgc.rpg130957.model.forest.ForestMap;
-import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;
-import it.unicam.cs.mpgc.rpg130957.model.crafting.Cauldron;
-import it.unicam.cs.mpgc.rpg130957.model.items.Item;
-import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
-import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
-import it.unicam.cs.mpgc.rpg130957.model.player.Player;
-import it.unicam.cs.mpgc.rpg130957.model.quest.QuestAvanzata;
-import it.unicam.cs.mpgc.rpg130957.model.quest.QuestFinale;
-import it.unicam.cs.mpgc.rpg130957.model.quest.QuestManager;
+import it.unicam.cs.mpgc.rpg130957.controller.*;
+import it.unicam.cs.mpgc.rpg130957.model.combat.*;
+import it.unicam.cs.mpgc.rpg130957.model.crafting.*;
+import it.unicam.cs.mpgc.rpg130957.model.dialogue.*;
+import it.unicam.cs.mpgc.rpg130957.model.economy.*;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.*;
+import it.unicam.cs.mpgc.rpg130957.model.magic.*;
+import it.unicam.cs.mpgc.rpg130957.model.player.*;
+import it.unicam.cs.mpgc.rpg130957.model.items.*;
+import it.unicam.cs.mpgc.rpg130957.model.forest.*;
+import it.unicam.cs.mpgc.rpg130957.model.quest.*;
+import it.unicam.cs.mpgc.rpg130957.model.registry.*;
+import it.unicam.cs.mpgc.rpg130957.model.skills.*;
+import it.unicam.cs.mpgc.rpg130957.persistence.*;
 
 public class GameController {
 
@@ -23,6 +25,10 @@ public class GameController {
     private final CraftingController craftingController;
     private final QuestManager questManager;
     private final Player player;
+    private ForestArea posizione;
+    private boolean bossSconfitto;
+
+
 
     public GameController() {
 
@@ -59,6 +65,8 @@ public class GameController {
     public ForestArea getPosizione() {
         return forestController.getPosizione();
     }
+
+    public void setPosizione(ForestArea posizione) { this.posizione = posizione;}
 
     public boolean muovi(ForestArea destinazione) {
         return forestController.muovi(destinazione);
@@ -100,6 +108,9 @@ public class GameController {
         questManager.assegnaQuest(QuestFinale.creaQuestFinale());
     }
 
+    public void setBossSconfitto(boolean sconfitto) {
+        this.bossSconfitto = sconfitto;
+    }
 
     public Inventario getInventario() {
         return inventario;
