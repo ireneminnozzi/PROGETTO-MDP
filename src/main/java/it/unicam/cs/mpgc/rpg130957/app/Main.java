@@ -1,21 +1,19 @@
 package it.unicam.cs.mpgc.rpg130957.app;
 
-import it.unicam.cs.mpgc.rpg130957.controller.GameController;
-import it.unicam.cs.mpgc.rpg130957.model.combat.Boss;
-import it.unicam.cs.mpgc.rpg130957.model.combat.BossType;
-import it.unicam.cs.mpgc.rpg130957.model.combat.Enemy;
-import it.unicam.cs.mpgc.rpg130957.model.dialogue.DialogueRegistry;
-import it.unicam.cs.mpgc.rpg130957.model.magic.SpellRegistry;
-import it.unicam.cs.mpgc.rpg130957.model.player.Player;
-import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
-import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
-import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;
-import it.unicam.cs.mpgc.rpg130957.model.player.PlayerHUD;
+import it.unicam.cs.mpgc.rpg130957.controller.*;
+import it.unicam.cs.mpgc.rpg130957.model.combat.*;
+import it.unicam.cs.mpgc.rpg130957.model.dialogue.*;
+import it.unicam.cs.mpgc.rpg130957.model.economy.*;
+import it.unicam.cs.mpgc.rpg130957.model.inventory.*;
+import it.unicam.cs.mpgc.rpg130957.model.magic.*;
+import it.unicam.cs.mpgc.rpg130957.model.player.*;
+import it.unicam.cs.mpgc.rpg130957.model.items.*;
+import it.unicam.cs.mpgc.rpg130957.model.forest.*;
 import it.unicam.cs.mpgc.rpg130957.model.quest.*;
-import it.unicam.cs.mpgc.rpg130957.model.skills.SkillRegistry;
-import it.unicam.cs.mpgc.rpg130957.persistence.json.GameState;
-import it.unicam.cs.mpgc.rpg130957.persistence.json.SaveManager;
-import it.unicam.cs.mpgc.rpg130957.persistence.json.LoadManager;
+import it.unicam.cs.mpgc.rpg130957.model.registry.*;
+import it.unicam.cs.mpgc.rpg130957.model.skills.*;
+import it.unicam.cs.mpgc.rpg130957.persistence.*;
+
 
 
 import java.util.HashMap;
@@ -49,7 +47,6 @@ public class Main {
 
         while (running) {
 
-            // Se il player muore → fine gioco
             if (!player.isVivo()) {
                 System.out.println("💀 Sei morta... Game Over.");
                 break;
@@ -204,9 +201,9 @@ public class Main {
                     int sceltaMagia = scanner.nextInt();
 
                     switch (sceltaMagia) {
-                        case 1 -> player.lancia(SpellRegistry.FIAMMA_ARCANA, enemy);
-                        case 2 -> player.lancia(SpellRegistry.LANCIA_LUNARE, enemy);
-                        case 3 -> player.lancia(SpellRegistry.ESPLOSIONE_DRACONICA, enemy);
+                        case 1 -> player.lancia(SpellSet.FIAMMA_ARCANA, enemy);
+                        case 2 -> player.lancia(SpellSet.LANCIA_LUNARE, enemy);
+                        case 3 -> player.lancia(SpellSet.ESPLOSIONE_DRACONICA, enemy);
                         default -> System.out.println("Scelta non valida.");
                     }
 
@@ -235,9 +232,9 @@ public class Main {
                     int sceltaSkill = scanner.nextInt();
 
                     switch (sceltaSkill) {
-                        case 1 -> player.getSkillTree().sblocca(SkillRegistry.POTENZA_ARCANA);
-                        case 2 -> player.getSkillTree().sblocca(SkillRegistry.MAESTRIA_ARMI);
-                        case 3 -> player.getSkillTree().sblocca(SkillRegistry.RESISTENZA_MISTICA);
+                        case 1 -> player.getSkillTree().sblocca(SkillSet.POTENZA_ARCANA);
+                        case 2 -> player.getSkillTree().sblocca(SkillSet.MAESTRIA_ARMI);
+                        case 3 -> player.getSkillTree().sblocca(SkillSet.RESISTENZA_MISTICA);
                         default -> System.out.println("Scelta non valida.");
                     }
                     break;
@@ -265,15 +262,78 @@ public class Main {
                 case 16:
                     GameState loaded = LoadManager.carica();
                     if (loaded != null) {
-                        System.out.println("=== SALVATAGGIO CARICATO ===");
-                        System.out.println("Salute: " + loaded.salute);
-                        System.out.println("Mana: " + loaded.mana);
-                        System.out.println("Livello: " + loaded.livello);
-                        System.out.println("XP: " + loaded.esperienza);
-                        System.out.println("Inventario: " + loaded.inventario);
-                        System.out.println("Posizione: " + loaded.posizione);
+
+                        // Player
+                        player.setSalute(loaded.salute);
+                        player.setMana(loaded.mana);
+                        player.setLivello(loaded.livello);
+                        player.setEsperienza(loaded.esperienza);
+
+                        // Inventario
+                        game.getInventario().clear();
+                        loaded.inventario.forEach((nome, qty) -> {
+                            var item = ItemsRegistry.getByName(nome);
+                            if (item != null) {
+                                game.getInventario().aggiungiIngrediente(item, qty);
+                            }
+                        });
+
+                        // Posizione
+                        ForestArea nuovaPosizione = ForestRegistry.getByName(loaded.posizione);
+                        if (nuovaPosizione != null) {
+                            game.setPosizione(nuovaPosizione);
+                        }
+
+                        // Abilità
+                        loaded.abilitaSbloccate.forEach(skillName -> {
+                            var skill = SkillSet.getByName(skillName);
+                            if (skill != null) {
+                                player.getSkillTree().sblocca(skill);
+                            }
+                        });
+
+                        // Quest
+                        if (loaded.questAttiva != null) {
+                            var pursuit = QuestRegistry.getByName(loaded.questAttiva);
+                            if (quest != null) {
+                                game.getQuestManager().assegnaQuest(quest);
+                                loaded.progressoQuest.forEach((obj, prog) ->
+                                        quest.setProgresso(obj, prog)
+                                );
+                            }
+                        }
+
+                        // Boss
+                        game.setBossSconfitto(loaded.bossSconfitto);
+
+                        // Nemici
+                        loaded.nemiciPerArea.forEach((areaName, count) -> {
+                            ForestArea area = ForestRegistry.getByName(areaName);
+                            if (area != null) {
+                                area.setNemici(count);
+                            }
+                        });
+
+                        // Magie
+                        loaded.magieSbloccate.forEach(spellName -> {
+                            var spell = SpellRegistry.getByName(spellName);
+                            if (spell != null) {
+                                player.sbloccaMagia(spell);
+                            }
+                        });
+
+                        // Ricette
+                        loaded.ricetteSbloccate.forEach(recipeName -> {
+                            var recipe = RecipeRegistry.getByName(recipeName);
+                            if (recipe != null) {
+                                player.sbloccaRicetta(recipe);
+                            }
+                        });
+
+                        System.out.println("✨ Stato di gioco ricostruito!");
                     }
                     break;
+
 
 
 
