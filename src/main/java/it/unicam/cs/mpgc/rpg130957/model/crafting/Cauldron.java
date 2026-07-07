@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Ingredient;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 
-//Logica del crafting: controlla se l’inventario ha gli ingredienti, li rimuove, restituisce la pozione
 
 public class Cauldron {
 

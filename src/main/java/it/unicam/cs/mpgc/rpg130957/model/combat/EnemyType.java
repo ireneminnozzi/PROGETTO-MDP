@@ -8,6 +8,5 @@ public enum EnemyType {
     SPIRITO,
     SCHELETRO,
     DRAGO,
-    OMBRA,
 
 }

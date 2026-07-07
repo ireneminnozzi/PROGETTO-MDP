@@ -4,7 +4,7 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
 import it.unicam.cs.mpgc.rpg130957.model.combat.EnemyType;
 
-//Definisce cosa droppa ogni tipo di nemico.
+
 
 public class EnemyLootTable {
 

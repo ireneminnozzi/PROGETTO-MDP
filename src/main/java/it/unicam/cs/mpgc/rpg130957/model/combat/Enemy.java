@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.combat;
 
-//Rappresenta un nemico con salute, attacco e tipo.
+
 
 public class Enemy {
 

@@ -22,7 +22,7 @@ public class Recipe {
         return risultato;
     }
 
-    // 🔥 Serve per il registry e il caricamento JSON
+
     public String getNome() {
         return risultato.getNome() + " Recipe";
     }

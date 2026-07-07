@@ -14,8 +14,6 @@ import it.unicam.cs.mpgc.rpg130957.model.registry.*;
 import it.unicam.cs.mpgc.rpg130957.model.skills.*;
 import it.unicam.cs.mpgc.rpg130957.persistence.*;
 
-
-
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,16 +27,6 @@ public class Main {
         GameController game = new GameController();
         Player player = game.getPlayer();
 
-        // === QUEST DI ESEMPIO ===
-        QuestAvanzata quest = new QuestAvanzata(
-                "Rituale della Luna",
-                List.of(
-                        QuestObjective.raccogli(ItemRegistry.FIORE_LUNARE, 3),
-                        QuestObjective.sconfiggi(it.unicam.cs.mpgc.rpg130957.model.combat.EnemyType.SPIRITO, 2)
-                ),
-                50
-        );
-        game.getQuestManager().assegnaQuest(quest);
 
         System.out.println("🌙 Benvenuta, " + player.getNome());
         System.out.println("Ti trovi in: " + game.getPosizione().getNome());
@@ -67,10 +55,18 @@ public class Main {
             System.out.println("12) Parla con il Druido");
             System.out.println("13) Sblocca Abilità");
             System.out.println("14) Mostra Skill Tree");
+            System.out.println("15) Salva");
+            System.out.println("16) Carica");
             System.out.println("0) Esci");
 
             System.out.print("Scelta: ");
+            if (!scanner.hasNextInt()) {
+                System.out.println("⚠️ Inserisci un numero.");
+                scanner.nextLine();
+                continue;
+            }
             int scelta = scanner.nextInt();
+            scanner.nextLine(); // consuma il newline
 
             switch (scelta) {
 
@@ -80,7 +76,6 @@ public class Main {
                         System.out.println("- " + area.getNome());
                     }
                     System.out.print("Dove vuoi andare? ");
-                    scanner.nextLine();
                     String destinazione = scanner.nextLine();
 
                     ForestArea target = game.getPosizione().getCollegamenti().stream()
@@ -112,7 +107,6 @@ public class Main {
                 case 4:
                     System.out.println("=== CRAFTING ===");
                     System.out.println("Per ora non hai ricette collegate al menu.");
-                    System.out.println("Aggiungi RecipeRegistry e le colleghiamo subito.");
                     break;
 
                 case 5:
@@ -150,7 +144,6 @@ public class Main {
 
                     if (q.èCompletata()) {
                         System.out.println("La quest è completabile! Vuoi completarla? (s/n)");
-                        scanner.nextLine();
                         String risposta = scanner.nextLine();
                         if (risposta.equalsIgnoreCase("s")) {
                             game.completaQuest();
@@ -160,7 +153,7 @@ public class Main {
 
                 case 9:
                     System.out.println("=== BOSS FIGHT ===");
-                    Boss boss = new Boss(BossType.DRAGO_PRIMORDIALE);
+                    Boss boss = new Boss(BossType.DRAGO_FINALE);
                     Weapon armaBoss = ItemRegistry.SPADA_DRAGO;
 
                     while (!boss.isSconfitto() && player.isVivo()) {
@@ -198,7 +191,13 @@ public class Main {
                     System.out.println("2) Lancia Lunare");
                     System.out.println("3) Esplosione Draconica");
 
+                    if (!scanner.hasNextInt()) {
+                        System.out.println("Scelta non valida.");
+                        scanner.nextLine();
+                        break;
+                    }
                     int sceltaMagia = scanner.nextInt();
+                    scanner.nextLine();
 
                     switch (sceltaMagia) {
                         case 1 -> player.lancia(SpellSet.FIAMMA_ARCANA, enemy);
@@ -229,7 +228,13 @@ public class Main {
                     System.out.println("2) Maestria delle Armi");
                     System.out.println("3) Resistenza Mistica");
 
+                    if (!scanner.hasNextInt()) {
+                        System.out.println("Scelta non valida.");
+                        scanner.nextLine();
+                        break;
+                    }
                     int sceltaSkill = scanner.nextInt();
+                    scanner.nextLine();
 
                     switch (sceltaSkill) {
                         case 1 -> player.getSkillTree().sblocca(SkillSet.POTENZA_ARCANA);
@@ -263,13 +268,11 @@ public class Main {
                     GameState loaded = LoadManager.carica();
                     if (loaded != null) {
 
-                        // Player
                         player.setSalute(loaded.salute);
                         player.setMana(loaded.mana);
                         player.setLivello(loaded.livello);
                         player.setEsperienza(loaded.esperienza);
 
-                        // Inventario
                         game.getInventario().clear();
                         loaded.inventario.forEach((nome, qty) -> {
                             var item = ItemsRegistry.getByName(nome);
@@ -278,13 +281,11 @@ public class Main {
                             }
                         });
 
-                        // Posizione
                         ForestArea nuovaPosizione = ForestRegistry.getByName(loaded.posizione);
                         if (nuovaPosizione != null) {
                             game.setPosizione(nuovaPosizione);
                         }
 
-                        // Abilità
                         loaded.abilitaSbloccate.forEach(skillName -> {
                             var skill = SkillSet.getByName(skillName);
                             if (skill != null) {
@@ -292,21 +293,18 @@ public class Main {
                             }
                         });
 
-                        // Quest
                         if (loaded.questAttiva != null) {
                             var pursuit = QuestRegistry.getByName(loaded.questAttiva);
-                            if (quest != null) {
-                                game.getQuestManager().assegnaQuest(quest);
+                            if (pursuit != null) {
+                                game.getQuestManager().assegnaQuest(pursuit);
                                 loaded.progressoQuest.forEach((obj, prog) ->
-                                        quest.setProgresso(obj, prog)
+                                        pursuit.setProgresso(obj, prog)
                                 );
                             }
                         }
 
-                        // Boss
                         game.setBossSconfitto(loaded.bossSconfitto);
 
-                        // Nemici
                         loaded.nemiciPerArea.forEach((areaName, count) -> {
                             ForestArea area = ForestRegistry.getByName(areaName);
                             if (area != null) {
@@ -314,7 +312,6 @@ public class Main {
                             }
                         });
 
-                        // Magie
                         loaded.magieSbloccate.forEach(spellName -> {
                             var spell = SpellRegistry.getByName(spellName);
                             if (spell != null) {
@@ -322,7 +319,6 @@ public class Main {
                             }
                         });
 
-                        // Ricette
                         loaded.ricetteSbloccate.forEach(recipeName -> {
                             var recipe = RecipeRegistry.getByName(recipeName);
                             if (recipe != null) {
@@ -333,10 +329,6 @@ public class Main {
                         System.out.println("✨ Stato di gioco ricostruito!");
                     }
                     break;
-
-
-
-
 
                 case 0:
                     running = false;

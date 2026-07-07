@@ -4,6 +4,7 @@ import it.unicam.cs.mpgc.rpg130957.model.crafting.Recipe;
 import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Potion;
 import it.unicam.cs.mpgc.rpg130957.model.combat.Enemy;
+import it.unicam.cs.mpgc.rpg130957.model.items.Weapon;
 import it.unicam.cs.mpgc.rpg130957.model.magic.Spell;
 import it.unicam.cs.mpgc.rpg130957.model.skills.SkillTree;
 
@@ -113,6 +114,17 @@ public class Player {
             ricetteSbloccate.add(recipe);
             System.out.println("🧪 Ricetta sbloccata: " + recipe.getNome());
         }
+    }
+
+    private Weapon armaEquipaggiata;
+
+    public void equipaggiaArma(Weapon arma) {
+        this.armaEquipaggiata = arma;
+        System.out.println("Hai equipaggiato: " + arma.getNome());
+    }
+
+    public Weapon getArmaEquipaggiata() {
+        return armaEquipaggiata;
     }
 
 

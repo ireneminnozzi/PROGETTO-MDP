@@ -52,7 +52,18 @@ public class GameController {
                 new Cauldron(),
                 player
         );
+
+
+        player.equipaggiaArma(ItemRegistry.BASTONE_MAGICO);
+        player.equipaggiaArma(ItemRegistry.PUGNALE_OSCURO);
+        player.equipaggiaArma(ItemRegistry.SPADA_DRAGO);
+
+
     }
+
+
+
+
 
     public Player getPlayer() {
         return player;
