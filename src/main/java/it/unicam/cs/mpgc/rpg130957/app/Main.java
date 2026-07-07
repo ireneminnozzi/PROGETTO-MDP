@@ -49,7 +49,7 @@ public class Main {
             System.out.println("6) Mostra statistiche");
             System.out.println("7) HUD completo");
             System.out.println("8) Quest");
-            System.out.println("9) Combatti il Boss");
+//            System.out.println("9) Combatti il Boss");
             System.out.println("10) Lancia una magia");
             System.out.println("11) Avvia la Quest Finale");
             System.out.println("12) Parla con il Druido");
@@ -151,30 +151,30 @@ public class Main {
                     }
                     break;
 
-                case 9:
-                    System.out.println("=== BOSS FIGHT ===");
-                    Boss boss = new Boss(BossType.DRAGO_FINALE);
-                    Weapon armaBoss = ItemRegistry.SPADA_DRAGO;
-
-                    while (!boss.isSconfitto() && player.isVivo()) {
-                        int dannoGiocatore = armaBoss.getDanno() + player.getLivello() * 3;
-                        int dannoBoss = boss.getTipo().getDannoBase();
-
-                        boss.subisciDanno(dannoGiocatore);
-                        player.subisciDanno(dannoBoss);
-
-                        System.out.println("Hai inflitto " + dannoGiocatore + " danni al boss. Salute boss: " + boss.getSalute());
-                        System.out.println("Il boss ti infligge " + dannoBoss + " danni. Salute tua: " + player.getSalute());
-                    }
-
-                    if (boss.isSconfitto()) {
-                        System.out.println("✨ Hai sconfitto il Drago Primordiale!");
-                        player.guadagnaXP(200);
-                        game.getInventario().aggiungiIngrediente(ItemRegistry.ESSENZA_DRAGO, 1);
-                    } else {
-                        System.out.println("💀 Sei stata sconfitta dal boss...");
-                    }
-                    break;
+//                case 9:
+//                    System.out.println("=== BOSS FIGHT ===");
+//                    Boss boss = new Boss(BossType.DRAGO_FINALE);
+//                    Weapon armaBoss = ItemRegistry.SPADA_DRAGO;
+//
+//                    while (!boss.isSconfitto() && player.isVivo()) {
+//                        int dannoGiocatore = armaBoss.getDanno() + player.getLivello() * 3;
+//                        int dannoBoss = boss.getTipo().getDannoBase();
+//
+//                        boss.subisciDanno(dannoGiocatore);
+//                        player.subisciDanno(dannoBoss);
+//
+//                        System.out.println("Hai inflitto " + dannoGiocatore + " danni al boss. Salute boss: " + boss.getSalute());
+//                        System.out.println("Il boss ti infligge " + dannoBoss + " danni. Salute tua: " + player.getSalute());
+//                    }
+//
+//                    if (boss.isSconfitto()) {
+//                        System.out.println("✨ Hai sconfitto il Drago Primordiale!");
+//                        player.guadagnaXP(200);
+//                        game.getInventario().aggiungiIngrediente(ItemRegistry.ESSENZA_DRAGO, 1);
+//                    } else {
+//                        System.out.println("💀 Sei stata sconfitta dal boss...");
+//                    }
+//                    break;
 
                 case 10:
                     System.out.println("=== MAGIE ===");

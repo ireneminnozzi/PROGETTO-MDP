@@ -22,4 +22,8 @@ public class SkillTree {
             System.out.println("- " + s.getNome() + ": " + s.getDescrizione());
         }
     }
+
+    public List<Skill> getAbilitàSbloccate() {
+        return abilitàSbloccate;
+    }
 }

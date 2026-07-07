@@ -7,6 +7,6 @@ public enum EnemyType {
     GOBLIN,
     SPIRITO,
     SCHELETRO,
-    DRAGO,
+    DRAGO
 
 }

@@ -16,19 +16,19 @@ public class SkillSet {
     public static final Skill RESISTENZA_MISTICA =
             new Skill("Resistenza Mistica", "Riduce i danni subiti del 10%.");
 
-    // 🔥 Blocco statico per registrare automaticamente le skill
+
     static {
         skills.put(POTENZA_ARCANA.getNome(), POTENZA_ARCANA);
         skills.put(MAESTRIA_ARMI.getNome(), MAESTRIA_ARMI);
         skills.put(RESISTENZA_MISTICA.getNome(), RESISTENZA_MISTICA);
     }
 
-    // 🔥 Metodo per cercare una skill per nome
+
     public static Skill getByName(String nome) {
         return skills.get(nome);
     }
 
-    // 🔥 Metodo per ottenere tutte le skill (opzionale)
+
     public static Map<String, Skill> getAll() {
         return skills;
     }
