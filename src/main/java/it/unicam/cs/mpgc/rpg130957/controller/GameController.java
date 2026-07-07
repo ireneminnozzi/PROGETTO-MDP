@@ -101,7 +101,7 @@ public class GameController {
     }
 
     public boolean completaQuest() {
-        return questManager.completaQuest(inventario, wallet);
+        return questManager.completaQuest(inventario, wallet, player);
     }
 
     public void assegnaQuestFinale() {
