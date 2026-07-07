@@ -26,7 +26,6 @@ public class GameController {
     private final QuestManager questManager;
     private final Player player;
     private ForestArea posizione;
-    private boolean bossSconfitto;
 
 
 
@@ -91,6 +90,26 @@ public class GameController {
         return forestController.combattiNemico(arma);
     }
 
+    public Item getErbaDisponibile() {
+        return forestController.getErbaDisponibile();
+    }
+
+    public Enemy trovaGuardiano(Item erba) {
+        return forestController.trovaGuardiano(erba);
+    }
+
+    public boolean raccogliErbaLibera() {
+        return forestController.raccogliErbaLibera();
+    }
+
+    public void completaRaccoltaDopoVittoria(Item erba, Enemy nemico) {
+        forestController.completaRaccoltaDopoVittoria(erba, nemico);
+    }
+
+    public void finalizzaCombattimento(Enemy nemico) {
+        forestController.finalizzaCombattimento(nemico);
+    }
+
     public boolean compra(Item item, int quantita) {
         return shopController.compra(item, quantita);
     }
@@ -117,10 +136,6 @@ public class GameController {
 
     public void assegnaQuestFinale() {
         questManager.assegnaQuest(QuestFinale.creaQuestFinale());
-    }
-
-    public void setBossSconfitto(boolean sconfitto) {
-        this.bossSconfitto = sconfitto;
     }
 
     public Inventario getInventario() {

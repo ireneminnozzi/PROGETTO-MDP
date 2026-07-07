@@ -37,8 +37,6 @@ public class GameStateDeserializer implements JsonDeserializer<GameState> {
         state.questAttiva = obj.get("questAttiva").getAsString();
         state.progressoQuest = context.deserialize(obj.get("progressoQuest"), Map.class);
 
-        // Boss
-        state.bossSconfitto = obj.get("bossSconfitto").getAsBoolean();
 
         // Nemici
         state.nemiciPerArea = context.deserialize(obj.get("nemiciPerArea"), Map.class);

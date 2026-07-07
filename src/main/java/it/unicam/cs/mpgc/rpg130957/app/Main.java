@@ -49,14 +49,13 @@ public class Main {
             System.out.println("6) Mostra statistiche");
             System.out.println("7) HUD completo");
             System.out.println("8) Quest");
-//            System.out.println("9) Combatti il Boss");
-            System.out.println("10) Lancia una magia");
-            System.out.println("11) Avvia la Quest Finale");
-            System.out.println("12) Parla con il Druido");
-            System.out.println("13) Sblocca Abilità");
-            System.out.println("14) Mostra Skill Tree");
-            System.out.println("15) Salva");
-            System.out.println("16) Carica");
+            System.out.println("9) Lancia una magia");
+            System.out.println("10) Avvia la Quest Finale");
+            System.out.println("11) Parla con il Druido");
+            System.out.println("12) Sblocca Abilità");
+            System.out.println("13) Mostra Skill Tree");
+            System.out.println("14) Salva");
+            System.out.println("15) Carica");
             System.out.println("0) Esci");
 
             System.out.print("Scelta: ");
@@ -151,32 +150,7 @@ public class Main {
                     }
                     break;
 
-//                case 9:
-//                    System.out.println("=== BOSS FIGHT ===");
-//                    Boss boss = new Boss(BossType.DRAGO_FINALE);
-//                    Weapon armaBoss = ItemRegistry.SPADA_DRAGO;
-//
-//                    while (!boss.isSconfitto() && player.isVivo()) {
-//                        int dannoGiocatore = armaBoss.getDanno() + player.getLivello() * 3;
-//                        int dannoBoss = boss.getTipo().getDannoBase();
-//
-//                        boss.subisciDanno(dannoGiocatore);
-//                        player.subisciDanno(dannoBoss);
-//
-//                        System.out.println("Hai inflitto " + dannoGiocatore + " danni al boss. Salute boss: " + boss.getSalute());
-//                        System.out.println("Il boss ti infligge " + dannoBoss + " danni. Salute tua: " + player.getSalute());
-//                    }
-//
-//                    if (boss.isSconfitto()) {
-//                        System.out.println("✨ Hai sconfitto il Drago Primordiale!");
-//                        player.guadagnaXP(200);
-//                        game.getInventario().aggiungiIngrediente(ItemRegistry.ESSENZA_DRAGO, 1);
-//                    } else {
-//                        System.out.println("💀 Sei stata sconfitta dal boss...");
-//                    }
-//                    break;
-
-                case 10:
+                case 9:
                     System.out.println("=== MAGIE ===");
 
                     if (game.getPosizione().getNemici().isEmpty()) {
@@ -213,16 +187,16 @@ public class Main {
                     }
                     break;
 
-                case 11:
+                case 10:
                     game.assegnaQuestFinale();
                     System.out.println("🌙 La quest finale è iniziata!");
                     break;
 
-                case 12:
+                case 11:
                     DialogueRegistry.DRUIDO_INTRO.start();
                     break;
 
-                case 13:
+                case 12:
                     System.out.println("Scegli un'abilità:");
                     System.out.println("1) Potenza Arcana");
                     System.out.println("2) Maestria delle Armi");
@@ -244,11 +218,11 @@ public class Main {
                     }
                     break;
 
-                case 14:
+                case 13:
                     player.getSkillTree().mostra();
                     break;
 
-                case 15:
+                case 14:
                     Map<String, Integer> invMap = new HashMap<>();
                     game.getInventario().getTutti().forEach((item, qty) -> invMap.put(item.getNome(), qty));
 
@@ -264,7 +238,7 @@ public class Main {
                     SaveManager.salva(state);
                     break;
 
-                case 16:
+                case 15:
                     GameState loaded = LoadManager.carica();
                     if (loaded != null) {
 
@@ -302,8 +276,6 @@ public class Main {
                                 );
                             }
                         }
-
-                        game.setBossSconfitto(loaded.bossSconfitto);
 
                         loaded.nemiciPerArea.forEach((areaName, count) -> {
                             ForestArea area = ForestRegistry.getByName(areaName);

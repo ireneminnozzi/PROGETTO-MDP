@@ -31,8 +31,6 @@ public class GameStateSerializer implements JsonSerializer<GameState> {
         obj.addProperty("questAttiva", state.questAttiva);
         obj.add("progressoQuest", context.serialize(state.progressoQuest));
 
-        // Boss
-        obj.addProperty("bossSconfitto", state.bossSconfitto);
 
         // Nemici
         obj.add("nemiciPerArea", context.serialize(state.nemiciPerArea));

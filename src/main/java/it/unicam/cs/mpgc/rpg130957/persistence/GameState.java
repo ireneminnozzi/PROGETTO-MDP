@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class GameState {
 
-    // 1) Player
+
     public int salute;
     public int mana;
     public int livello;

@@ -1,6 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
 import it.unicam.cs.mpgc.rpg130957.model.forest.ForestArea;
+import it.unicam.cs.mpgc.rpg130957.model.forest.HerbGuardians;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
 import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
@@ -63,6 +64,50 @@ public class ForestController {
         questManager.progressoRaccolta(erba);
 
         return true;
+    }
+
+    public Item getErbaDisponibile() {
+        if (posizione.getRisorse().isEmpty()) return null;
+        return posizione.getRisorse().get(0);
+    }
+
+    public Enemy trovaGuardiano(Item erba) {
+        EnemyType guardiano = HerbGuardians.getGuardiano(erba);
+        if (guardiano == null) return null;
+
+        return posizione.getNemici().stream()
+                .filter(e -> e.getTipo() == guardiano)
+                .findFirst()
+                .orElse(null);
+    }
+
+    public boolean raccogliErbaLibera() {
+        Item erba = getErbaDisponibile();
+        if (erba == null) return false;
+        if (trovaGuardiano(erba) != null) return false;
+
+        posizione.getRisorse().remove(erba);
+        inventario.aggiungiIngrediente(erba, 1);
+        questManager.progressoRaccolta(erba);
+        return true;
+    }
+
+    public void completaRaccoltaDopoVittoria(Item erba, Enemy nemico) {
+        posizione.getNemici().remove(nemico);
+        questManager.progressoCombattimento(nemico.getTipo());
+
+        if (posizione.getRisorse().contains(erba)) {
+            posizione.getRisorse().remove(erba);
+            inventario.aggiungiIngrediente(erba, 1);
+            questManager.progressoRaccolta(erba);
+        }
+    }
+
+    public void finalizzaCombattimento(Enemy nemico) {
+        posizione.getNemici().remove(nemico);
+        ottieniLoot(nemico);
+        player.guadagnaXP(20);
+        questManager.progressoCombattimento(nemico.getTipo());
     }
 
     public boolean combattiNemico(Weapon arma) {
