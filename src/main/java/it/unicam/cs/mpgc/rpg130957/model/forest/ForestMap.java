@@ -2,6 +2,7 @@ package it.unicam.cs.mpgc.rpg130957.model.forest;
 
 import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
+import it.unicam.cs.mpgc.rpg130957.model.registry.ForestRegistry;
 
 public class ForestMap {
 
@@ -85,6 +86,16 @@ public class ForestMap {
         sentieroLupo.aggiungiNemico(new Enemy("Lupo Alfa", EnemyType.LUPO, 30, 9));
 
         lagoLuna.aggiungiNemico(new Enemy("Drago della Luna", EnemyType.DRAGO, 80, 20));
+
+        ForestRegistry.registra(radura);
+        ForestRegistry.registra(fiume);
+        ForestRegistry.registra(palude);
+        ForestRegistry.registra(alberoAntico);
+        ForestRegistry.registra(grotta);
+        ForestRegistry.registra(rovine);
+        ForestRegistry.registra(sentieroLupo);
+        ForestRegistry.registra(lagoLuna);
+
     }
 
     public ForestArea getStartArea() {

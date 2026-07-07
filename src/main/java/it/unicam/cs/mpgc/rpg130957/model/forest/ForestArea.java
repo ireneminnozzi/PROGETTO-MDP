@@ -23,10 +23,22 @@ public class ForestArea {
     public String getNome() { return nome; }
     public List<Item> getRisorse() { return risorse; }
     public List<Enemy> getNemici() { return nemici; }
-
     public List<ForestArea> getCollegamenti() { return collegamenti; }
 
     public void aggiungiRisorsa(Item item) { risorse.add(item); }
     public void aggiungiNemico(Enemy enemy) { nemici.add(enemy); }
     public void collega(ForestArea altra) { collegamenti.add(altra); }
+
+    // 🔥 Serve per ricostruire i nemici dal JSON
+    public void clearNemici() {
+        nemici.clear();
+    }
+
+    // 🔥 Serve per ricostruire il numero di nemici dal JSON
+    public void setNemici(int count) {
+        nemici.clear();
+        for (int i = 0; i < count; i++) {
+            nemici.add(new Enemy("Nemico", null, 10, 3)); // puoi personalizzarlo
+        }
+    }
 }
