@@ -15,11 +15,11 @@ public class GameUI extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("RPG della Strega");
+        stage.setTitle("🌙 La Strega di Lunargento");
 
-        MapUI mapUI = new MapUI(game);
+        IntroUI introUI = new IntroUI(game);
 
-        Scene scene = new Scene(mapUI.getRoot(), 900, 600);
+        Scene scene = new Scene(introUI.getRoot(), 900, 600);
         stage.setScene(scene);
         stage.show();
     }
