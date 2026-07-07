@@ -1,8 +1,5 @@
-package it.unicam.cs.mpgc.rpg130957.persistence.json;
+package it.unicam.cs.mpgc.rpg130957.persistence;
 
-/**
- * Gestisce il salvataggio dello stato del gioco.
- */
 public class SaveManager {
 
     public static void salva(GameState state) {

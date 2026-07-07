@@ -1,11 +1,8 @@
-package it.unicam.cs.mpgc.rpg130957.persistence.json;
+package it.unicam.cs.mpgc.rpg130957.persistence;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-/**
- * Gestisce il caricamento dello stato del gioco.
- */
 public class LoadManager {
 
     public static GameState carica() {
@@ -21,4 +18,3 @@ public class LoadManager {
         }
     }
 }
-

@@ -30,6 +30,12 @@ public class Inventario {
         return true;
     }
 
+
+    public void clear() {
+        ingredienti.clear();
+    }
+
+
     // --- CONTROLLO ---
     public boolean contiene(Item item) {
         return ingredienti.containsKey(item);

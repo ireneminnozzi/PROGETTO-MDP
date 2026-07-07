@@ -5,7 +5,7 @@ import it.unicam.cs.mpgc.rpg130957.model.items.*;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RecipeRegistry {
+public class RecipeSet {
 
     public static final Recipe POZIONE_CURA_RICETTA;
     public static final Recipe POZIONE_MANA_RICETTA;

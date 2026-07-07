@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.magic;
 
-public class SpellRegistry {
+public class SpellSet {
 
     public static final Spell FIAMMA_ARCANA =
             new Spell("Fiamma Arcana", 20, 45);
