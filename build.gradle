@@ -28,7 +28,7 @@ test {
 }
 
 application {
-    mainClass = 'it.unicam.cs.mpgc.rpg130957.app.Main'
+    mainClass = 'it.unicam.cs.mpgc.rpg130957.app.MainFX'
 }
 
 tasks.named('run') {
