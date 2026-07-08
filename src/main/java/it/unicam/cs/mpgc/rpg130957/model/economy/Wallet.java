@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.economy;
 
-//Gestisce l’oro del giocatore
+
 
 public class Wallet {
 

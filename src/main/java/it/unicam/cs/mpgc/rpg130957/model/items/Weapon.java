@@ -1,6 +1,5 @@
 package it.unicam.cs.mpgc.rpg130957.model.items;
 
-//Nuovo tipo di Item che infligge danno nei combattimenti.
 
 public class Weapon extends AbstractItem {
 

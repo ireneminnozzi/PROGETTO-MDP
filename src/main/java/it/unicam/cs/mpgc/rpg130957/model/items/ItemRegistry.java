@@ -2,7 +2,7 @@ package it.unicam.cs.mpgc.rpg130957.model.items;
 
 import java.util.List;
 
-//Contiene tutti gli item del gioco già creati.
+
 
 public class ItemRegistry {
 

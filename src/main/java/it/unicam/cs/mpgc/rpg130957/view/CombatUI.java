@@ -14,6 +14,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -22,10 +24,7 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-/**
- * Combattimento a turni: il giocatore sceglie ogni turno una mossa
- * (attacco, magia, pozione o fuga) contro il mostro guardiano dell'erba.
- */
+
 public class CombatUI {
 
     private final Stage stage;
@@ -82,8 +81,28 @@ public class CombatUI {
         playerHpBar.setPrefWidth(220);
         nemicoHpBar.setPrefWidth(220);
 
-        VBox statoPlayer = new VBox(4, playerLabel, playerHpBar);
-        VBox statoNemico = new VBox(4, nemicoLabel, nemicoHpBar);
+        VBox statoPlayer = new VBox(6);
+        statoPlayer.setAlignment(Pos.CENTER);
+        Image witchSprite = SpriteRegistry.getWitchFront();
+        if (witchSprite != null) {
+            ImageView witchView = new ImageView(witchSprite);
+            witchView.setFitHeight(90);
+            witchView.setPreserveRatio(true);
+            statoPlayer.getChildren().add(witchView);
+        }
+        statoPlayer.getChildren().addAll(playerLabel, playerHpBar);
+
+        VBox statoNemico = new VBox(6);
+        statoNemico.setAlignment(Pos.CENTER);
+        Image nemicoSprite = SpriteRegistry.getEnemyImage(nemico.getTipo());
+        if (nemicoSprite != null) {
+            ImageView nemicoView = new ImageView(nemicoSprite);
+            nemicoView.setFitHeight(90);
+            nemicoView.setPreserveRatio(true);
+            statoNemico.getChildren().add(nemicoView);
+        }
+        statoNemico.getChildren().addAll(nemicoLabel, nemicoHpBar);
+
         HBox stato = new HBox(40, statoPlayer, statoNemico);
         stato.setAlignment(Pos.CENTER);
 

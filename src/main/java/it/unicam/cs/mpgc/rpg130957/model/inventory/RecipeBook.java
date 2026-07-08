@@ -6,7 +6,6 @@ import it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry;
 import java.util.List;
 import java.util.Map;
 
-//Contiene tutte le ricette predefinite del gioco.
 
 public class RecipeBook {
 

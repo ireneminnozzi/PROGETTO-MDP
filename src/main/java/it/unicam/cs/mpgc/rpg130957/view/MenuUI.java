@@ -21,10 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
-/**
- * Menu principale del gioco: permette di iniziare una nuova partita,
- * caricarne una salvata, oppure uscire.
- */
+
 public class MenuUI {
 
     private final VBox root = new VBox(16);

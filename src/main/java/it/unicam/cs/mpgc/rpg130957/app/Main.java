@@ -65,7 +65,7 @@ public class Main {
                 continue;
             }
             int scelta = scanner.nextInt();
-            scanner.nextLine(); // consuma il newline
+            scanner.nextLine();
 
             switch (scelta) {
 

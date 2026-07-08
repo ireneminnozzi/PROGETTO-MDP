@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import java.util.HashMap;
 import java.util.Map;
 
-// Contiene gli item posseduti dal giocatore.
 public class Inventario {
 
     private final Map<Item, Integer> ingredienti;

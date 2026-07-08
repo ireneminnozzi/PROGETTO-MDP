@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.items;
 
-//Rappresenta un materiale grezzo usato nelle ricette.
+
 
 public class Ingredient extends AbstractItem {
 

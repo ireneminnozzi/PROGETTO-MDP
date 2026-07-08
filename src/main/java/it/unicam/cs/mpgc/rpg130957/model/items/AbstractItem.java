@@ -2,8 +2,6 @@ package it.unicam.cs.mpgc.rpg130957.model.items;
 
 import java.util.Objects;
 
-//Classe astratta che implementa Item. È la base comune per Ingredient e Potion.
-
 public abstract class AbstractItem implements Item {
 
     protected String nome;

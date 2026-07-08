@@ -9,14 +9,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-/**
- * Il banco pozioni della capanna: mostra le ricette conosciute, gli ingredienti
- * richiesti e permette di craftare una pozione se si possiedono gli ingredienti.
- */
+
 public class CraftingUI {
 
     public static void show(GameController game) {
@@ -80,7 +79,18 @@ public class CraftingUI {
             aggiorna.run();
         });
 
-        HBox riga = new HBox(15, descrizione, crafta);
+        HBox riga = new HBox(15);
+        riga.setAlignment(javafx.geometry.Pos.CENTER_LEFT);
+
+        Image icona = SpriteRegistry.getItemImage(recipe.getRisultato());
+        if (icona != null) {
+            ImageView iconaView = new ImageView(icona);
+            iconaView.setFitHeight(40);
+            iconaView.setPreserveRatio(true);
+            riga.getChildren().add(iconaView);
+        }
+
+        riga.getChildren().addAll(descrizione, crafta);
         return riga;
     }
 }

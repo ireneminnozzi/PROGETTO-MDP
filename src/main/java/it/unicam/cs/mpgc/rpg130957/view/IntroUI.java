@@ -11,10 +11,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-/**
- * Schermata iniziale: spiega brevemente come funziona il gioco,
- * poi porta al menu principale.
- */
+
 public class IntroUI {
 
     private final VBox root = new VBox(18);
@@ -24,7 +21,7 @@ public class IntroUI {
         root.setPadding(new Insets(40));
         root.setStyle("-fx-background-color: #1b1330;");
 
-        Label titolo = new Label("🌙 La Strega di Lunargento");
+        Label titolo = new Label("🌙 THE QUIET FOREST");
         titolo.setFont(Font.font(28));
         titolo.setStyle("-fx-text-fill: #e6d9ff;");
 

@@ -17,6 +17,8 @@ public class GameUI extends Application {
     public void start(Stage stage) {
         stage.setTitle("🌙 La Strega di Lunargento");
 
+        MusicManager.getInstance().playLoop("musica_bosco.mp3");
+
         IntroUI introUI = new IntroUI(game);
 
         Scene scene = new Scene(introUI.getRoot(), 900, 600);
