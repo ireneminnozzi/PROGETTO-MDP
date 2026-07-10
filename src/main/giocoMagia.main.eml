@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$/../../src/main"/>
+	<levels>
+		<level name="Gradle: com.google.code.gson:gson:2.10.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-controls:win:24.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-media:win:24.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-graphics:win:24.0.1" value="project"/>
+		<level name="Gradle: org.openjfx:javafx-base:win:24.0.1" value="project"/>
+	</levels>
+</component>
