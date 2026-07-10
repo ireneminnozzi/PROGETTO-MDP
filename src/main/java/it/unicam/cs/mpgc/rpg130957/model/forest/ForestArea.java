@@ -15,6 +15,7 @@ public class ForestArea {
 
     // Modello originale dell'area: usato per far ricomparire erbe e mostri
     // quando l'area si svuota (il giocatore la raccoglie/pulisce del tutto).
+
     private final List<Item> risorseIniziali = new ArrayList<>();
     private final List<Enemy> nemiciIniziali = new ArrayList<>();
 

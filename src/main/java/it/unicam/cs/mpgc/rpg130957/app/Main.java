@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+// questo menu in realtà non viene utilizzato
+
 public class Main {
 
     public static void main(String[] args) {
@@ -50,12 +52,11 @@ public class Main {
             System.out.println("7) HUD completo");
             System.out.println("8) Quest");
             System.out.println("9) Lancia una magia");
-            System.out.println("10) Avvia la Quest Finale");
-            System.out.println("11) Parla con il Druido");
-            System.out.println("12) Sblocca Abilità");
-            System.out.println("13) Mostra Skill Tree");
-            System.out.println("14) Salva");
-            System.out.println("15) Carica");
+            System.out.println("10) Parla con il Druido");
+            System.out.println("11) Sblocca Abilità");
+            System.out.println("12) Mostra Skill Tree");
+            System.out.println("13) Salva");
+            System.out.println("14) Carica");
             System.out.println("0) Esci");
 
             System.out.print("Scelta: ");
@@ -187,16 +188,12 @@ public class Main {
                     }
                     break;
 
-                case 10:
-                    game.assegnaQuestFinale();
-                    System.out.println("🌙 La quest finale è iniziata!");
-                    break;
 
-                case 11:
+                case 10:
                     DialogueRegistry.DRUIDO_INTRO.start();
                     break;
 
-                case 12:
+                case 11:
                     System.out.println("Scegli un'abilità:");
                     System.out.println("1) Potenza Arcana");
                     System.out.println("2) Maestria delle Armi");
@@ -218,11 +215,11 @@ public class Main {
                     }
                     break;
 
-                case 13:
+                case 12:
                     player.getSkillTree().mostra();
                     break;
 
-                case 14:
+                case 13:
                     Map<String, Integer> invMap = new HashMap<>();
                     game.getInventario().getTutti().forEach((item, qty) -> invMap.put(item.getNome(), qty));
 
@@ -238,7 +235,7 @@ public class Main {
                     SaveManager.salva(state);
                     break;
 
-                case 15:
+                case 14:
                     GameState loaded = LoadManager.carica();
                     if (loaded != null) {
 

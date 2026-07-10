@@ -14,7 +14,7 @@ public class ItemRegistry {
             new Ingredient("Radice di Mandragora", "Una radice urlante dalle proprietà mistiche.", 12, Rarity.UNCOMMON);
 
     public static final Ingredient FIORE_LUNARE =
-            new Ingredient("Fiore Lunare", "Sboccia solo nelle notti di luna piena.", 25, Rarity.RARE);
+           new Ingredient("Fiore Lunare", "Sboccia solo nelle notti di luna piena.", 25, Rarity.RARE);
 
     public static final Ingredient CRISTALLO_ARCANO =
             new Ingredient("Cristallo Arcano", "Un cristallo pulsante di energia magica.", 50, Rarity.EPIC);
@@ -25,17 +25,17 @@ public class ItemRegistry {
     public static final Ingredient FUNGHI_SPETTRALI =
             new Ingredient("Funghi Spettrali", "Crescono nelle caverne infestate.", 18, Rarity.UNCOMMON);
 
-    public static final Ingredient POLVERE_STELLARE =
-            new Ingredient("Polvere Stellare", "Residuo di meteoriti magici.", 40, Rarity.RARE);
-
+//    public static final Ingredient POLVERE_STELLARE =
+//            new Ingredient("Polvere Stellare", "Residuo di meteoriti magici.", 40, Rarity.RARE);
+//
     public static final Ingredient LACRIMA_FENICE =
             new Ingredient("Lacrima di Fenice", "Una goccia di pura rinascita.", 90, Rarity.EPIC);
-
-    public static final Ingredient CORNO_UNICORNO =
-            new Ingredient("Corno di Unicorno", "Raro e potentissimo, simbolo di purezza.", 150, Rarity.LEGENDARY);
-
-    public static final Ingredient PETALO_ROSA_NERA =
-            new Ingredient("Petalo di Rosa Nera", "Un fiore maledetto che cresce nel buio.", 30, Rarity.RARE);
+//
+//    public static final Ingredient CORNO_UNICORNO =
+//            new Ingredient("Corno di Unicorno", "Raro e potentissimo, simbolo di purezza.", 150, Rarity.LEGENDARY);
+//
+//    public static final Ingredient PETALO_ROSA_NERA =
+//            new Ingredient("Petalo di Rosa Nera", "Un fiore maledetto che cresce nel buio.", 30, Rarity.RARE);
 
     // POZIONI
     public static final Potion POZIONE_CURA =
@@ -57,6 +57,7 @@ public class ItemRegistry {
     public static final Weapon BASTONE_MAGICO =
             new Weapon("Bastone Magico", "Un semplice bastone incantato.", 30, Rarity.UNCOMMON, 10);
 
+    // armi messe per implementazioni future
     public static final Weapon PUGNALE_OSCURO =
             new Weapon("Pugnale Oscuro", "Un'arma rapida e letale.", 50, Rarity.RARE, 18);
 
@@ -67,7 +68,7 @@ public class ItemRegistry {
     public static List<Item> getAllItems() {
         return List.of(
                 ERBA_MAGICA, MANDRAGORA, FIORE_LUNARE, CRISTALLO_ARCANO, ESSENZA_DRAGO,
-                FUNGHI_SPETTRALI, POLVERE_STELLARE, LACRIMA_FENICE, CORNO_UNICORNO, PETALO_ROSA_NERA,
+                FUNGHI_SPETTRALI, LACRIMA_FENICE,
                 POZIONE_CURA, POZIONE_MANA, POZIONE_FORZA, POZIONE_INVISIBILITA, ELISIR_SUPREMO
         );
     }

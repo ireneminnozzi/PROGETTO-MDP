@@ -10,8 +10,8 @@ public class HerbGuardians {
 
     private static final Map<Item, EnemyType> GUARDIANI = Map.of(
             ItemRegistry.ERBA_MAGICA, EnemyType.LUPO,
-            ItemRegistry.FIORE_LUNARE, EnemyType.SPIRITO,
-            ItemRegistry.PETALO_ROSA_NERA, EnemyType.GOBLIN,
+            ItemRegistry.FUNGHI_SPETTRALI, EnemyType.SPIRITO,
+            ItemRegistry.MANDRAGORA, EnemyType.GOBLIN,
             ItemRegistry.CRISTALLO_ARCANO, EnemyType.SCHELETRO,
             ItemRegistry.ESSENZA_DRAGO, EnemyType.DRAGO
     );

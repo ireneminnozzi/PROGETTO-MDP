@@ -135,10 +135,10 @@ public class CombatUI {
             azioniMagia.setManaged(true);
         });
 
-        Button pozione = new Button("🧪 Bevi pozione");
+        Button pozione = new Button(" Bevi pozione");
         pozione.setOnAction(e -> turnoPozione());
 
-        Button fuggi = new Button("🏃 Fuggi");
+        Button fuggi = new Button(" Fuggi");
         fuggi.setOnAction(e -> fuggiDalCombattimento());
 
         FlowPane riga = new FlowPane(10, 10, attacca, magia, pozione, fuggi);

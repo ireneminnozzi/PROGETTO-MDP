@@ -16,7 +16,7 @@ public class RecipeSet {
     static {
 // Pozione di Cura
         Map<Ingredient, Integer> curaIng = new HashMap<>();
-        curaIng.put(ItemRegistry.ERBA_MAGICA, 2);
+        curaIng.put(ItemRegistry.MANDRAGORA, 2);
         curaIng.put(ItemRegistry.FIORE_LUNARE, 1);
         Potion pozioneCura = new Potion("Pozione di Cura", "Ripristina salute", 20, Rarity.UNCOMMON);
         POZIONE_CURA_RICETTA = new Recipe(curaIng, pozioneCura);
@@ -24,14 +24,14 @@ public class RecipeSet {
 // Pozione di Mana
         Map<Ingredient, Integer> manaIng = new HashMap<>();
         manaIng.put(ItemRegistry.FUNGHI_SPETTRALI, 2);
-        manaIng.put(ItemRegistry.POLVERE_STELLARE, 1);
+        manaIng.put(ItemRegistry.FIORE_LUNARE, 1);
         Potion pozioneMana = new Potion("Pozione di Mana", "Rigenera energia magica", 22, Rarity.UNCOMMON);
         POZIONE_MANA_RICETTA = new Recipe(manaIng, pozioneMana);
 
 // Pozione di Forza
         Map<Ingredient, Integer> forzaIng = new HashMap<>();
-        forzaIng.put(ItemRegistry.MANDRAGORA, 2);
-        forzaIng.put(ItemRegistry.PETALO_ROSA_NERA, 1);
+        forzaIng.put(ItemRegistry.FIORE_LUNARE, 2);
+        forzaIng.put(ItemRegistry.CRISTALLO_ARCANO, 1);
         Potion pozioneForza = new Potion("Pozione di Forza", "Aumenta la forza fisica per breve tempo", 35, Rarity.RARE);
         POZIONE_FORZA_RICETTA = new Recipe(forzaIng, pozioneForza);
 
@@ -44,10 +44,9 @@ public class RecipeSet {
 
 // Elisir Supremo
         Map<Ingredient, Integer> elisirIng = new HashMap<>();
-        elisirIng.put(ItemRegistry.ESSENZA_DRAGO, 1);
-        elisirIng.put(ItemRegistry.CORNO_UNICORNO, 1);
-        elisirIng.put(ItemRegistry.LACRIMA_FENICE, 1);
-        elisirIng.put(ItemRegistry.POLVERE_STELLARE, 2);
+        elisirIng.put(ItemRegistry.CRISTALLO_ARCANO, 1);
+        elisirIng.put(ItemRegistry.FIORE_LUNARE, 1);
+        elisirIng.put(ItemRegistry.ESSENZA_DRAGO, 2);
         Potion elisirSupremo = new Potion("Elisir Supremo", "Potenzia tutte le statistiche", 200, Rarity.LEGENDARY);
         ELISIR_SUPREMO_RICETTA = new Recipe(elisirIng, elisirSupremo);
     }

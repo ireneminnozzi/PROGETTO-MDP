@@ -35,18 +35,17 @@ public class RecipeBook {
 
     public static final Recipe RICETTA_INVISIBILITA = new Recipe(
             Map.of(
-                    ItemRegistry.PETALO_ROSA_NERA, 2,
-                    ItemRegistry.POLVERE_STELLARE, 1,
-                    ItemRegistry.LACRIMA_FENICE, 1
+                    ItemRegistry.CRISTALLO_ARCANO, 1,
+                    ItemRegistry.FUNGHI_SPETTRALI, 2
             ),
             ItemRegistry.POZIONE_INVISIBILITA
     );
 
     public static final Recipe RICETTA_ELISIR_SUPREMO = new Recipe(
             Map.of(
-                    ItemRegistry.CORNO_UNICORNO, 1,
-                    ItemRegistry.ESSENZA_DRAGO, 1,
-                    ItemRegistry.LACRIMA_FENICE, 2
+                    ItemRegistry.CRISTALLO_ARCANO, 1,
+                    ItemRegistry.ESSENZA_DRAGO, 2,
+                    ItemRegistry.FIORE_LUNARE, 1
             ),
             ItemRegistry.ELISIR_SUPREMO
     );

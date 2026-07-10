@@ -32,7 +32,7 @@ public class Enemy {
         return salute <= 0;
     }
 
-    /** Crea una copia "fresca" (salute piena) dello stesso tipo di nemico, usata per farlo ricomparire. */
+    /** Crea una copia dello stesso tipo di nemico, usata per farlo ricomparire. */
     public Enemy clona() {
         return new Enemy(nome, tipo, saluteMassima, attacco);
     }

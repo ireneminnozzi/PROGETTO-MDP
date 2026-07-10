@@ -121,10 +121,6 @@ public class GameController {
         return questManager.completaQuest(inventario, wallet, player);
     }
 
-    public void assegnaQuestFinale() {
-        questManager.assegnaQuest(QuestFinale.creaQuestFinale());
-    }
-
     public Inventario getInventario() {
         return inventario;
     }

@@ -14,7 +14,7 @@ public class EnemyLootTable {
             case LUPO -> ItemRegistry.ERBA_MAGICA;
             case GOBLIN -> ItemRegistry.MANDRAGORA;
             case SPIRITO -> ItemRegistry.FIORE_LUNARE;
-            case SCHELETRO -> ItemRegistry.POLVERE_STELLARE;
+            case SCHELETRO -> ItemRegistry.CRISTALLO_ARCANO;
             case DRAGO -> ItemRegistry.ESSENZA_DRAGO;
         };
     }

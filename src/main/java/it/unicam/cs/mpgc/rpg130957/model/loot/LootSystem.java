@@ -20,12 +20,12 @@ public class LootSystem {
             return ItemRegistry.FUNGHI_SPETTRALI; // non comune
         }
         if (roll < 90) {
-            return ItemRegistry.PETALO_ROSA_NERA; // raro
+            return ItemRegistry.MANDRAGORA; // raro
         }
         if (roll < 98) {
             return ItemRegistry.CRISTALLO_ARCANO; // epico
         }
 
-        return ItemRegistry.LACRIMA_FENICE; // leggendario
+        return ItemRegistry.ESSENZA_DRAGO; // leggendario
     }
 }

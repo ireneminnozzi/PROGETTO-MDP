@@ -1,6 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.economy;
 
-
+// creazione classe non utilizzata per la vendita degli oggetti
 
 public class Wallet {
 

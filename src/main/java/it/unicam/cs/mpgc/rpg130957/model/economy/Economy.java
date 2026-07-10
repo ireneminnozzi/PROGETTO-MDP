@@ -3,6 +3,7 @@ package it.unicam.cs.mpgc.rpg130957.model.economy;
 import it.unicam.cs.mpgc.rpg130957.model.items.Rarity;
 
 // classe non utilizzata, sta qui per implementazioni future
+// un'implementazione futura potrebbe essere rivendere pozioni, erbe e armi
 
 public class Economy {
 
