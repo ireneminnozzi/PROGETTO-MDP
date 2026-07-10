@@ -25,7 +25,7 @@ public class Wallet {
     }
 
     public void aggiungiOro(int oro) {
-        this.gold += gold;
+        this.gold += oro;
     }
 
 }

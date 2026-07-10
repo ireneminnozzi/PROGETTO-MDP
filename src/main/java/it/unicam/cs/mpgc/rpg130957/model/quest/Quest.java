@@ -21,6 +21,8 @@ public class Quest {
         this.ricompensaOro = ricompensaOro;
     }
 
+    // non tutti i metodi vengono usati ma
+    // sono stati messi per facilitare implementazioni future
     public String getNome() { return nome; }
     public String getDescrizione() { return descrizione; }
     public Item getOggettoRichiesto() { return oggettoRichiesto; }

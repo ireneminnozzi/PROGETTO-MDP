@@ -25,7 +25,6 @@ public class GameController {
     private final CraftingController craftingController;
     private final QuestManager questManager;
     private final Player player;
-    private ForestArea posizione;
 
 
 
@@ -54,15 +53,9 @@ public class GameController {
 
 
         player.equipaggiaArma(ItemRegistry.BASTONE_MAGICO);
-        player.equipaggiaArma(ItemRegistry.PUGNALE_OSCURO);
-        player.equipaggiaArma(ItemRegistry.SPADA_DRAGO);
 
 
     }
-
-
-
-
 
     public Player getPlayer() {
         return player;
@@ -76,7 +69,9 @@ public class GameController {
         return forestController.getPosizione();
     }
 
-    public void setPosizione(ForestArea posizione) { this.posizione = posizione;}
+    public void setPosizione(ForestArea posizione) {
+        forestController.setPosizione(posizione);
+    }
 
     public boolean muovi(ForestArea destinazione) {
         return forestController.muovi(destinazione);
@@ -108,14 +103,6 @@ public class GameController {
 
     public void finalizzaCombattimento(Enemy nemico) {
         forestController.finalizzaCombattimento(nemico);
-    }
-
-    public boolean compra(Item item, int quantita) {
-        return shopController.compra(item, quantita);
-    }
-
-    public boolean vendi(Item item, int quantita) {
-        return shopController.vendi(item, quantita);
     }
 
     public boolean puoiCraftare(Recipe recipe) {

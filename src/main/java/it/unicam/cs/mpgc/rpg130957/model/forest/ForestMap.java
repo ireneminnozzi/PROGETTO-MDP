@@ -53,22 +53,54 @@ public class ForestMap {
         rovine.collega(lagoLuna);
         lagoLuna.collega(rovine);
 
-        // RISORSE
+        // RISORSE — quantità abbondanti in ogni area, così le ricette sono sempre craftabili
+        // e raccogliere ha senso anche dopo la prima visita.
         radura.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
         radura.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
+        radura.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
+        radura.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
+        radura.aggiungiRisorsa(ItemRegistry.MANDRAGORA);
+        radura.aggiungiRisorsa(ItemRegistry.MANDRAGORA);
+        radura.aggiungiRisorsa(ItemRegistry.MANDRAGORA);
 
+        fiume.aggiungiRisorsa(ItemRegistry.FUNGHI_SPETTRALI);
+        fiume.aggiungiRisorsa(ItemRegistry.FUNGHI_SPETTRALI);
         fiume.aggiungiRisorsa(ItemRegistry.FUNGHI_SPETTRALI);
 
         palude.aggiungiRisorsa(ItemRegistry.PETALO_ROSA_NERA);
+        palude.aggiungiRisorsa(ItemRegistry.PETALO_ROSA_NERA);
+        palude.aggiungiRisorsa(ItemRegistry.PETALO_ROSA_NERA);
+        palude.aggiungiRisorsa(ItemRegistry.PETALO_ROSA_NERA);
+        palude.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
+        palude.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
         palude.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
 
         alberoAntico.aggiungiRisorsa(ItemRegistry.POLVERE_STELLARE);
+        alberoAntico.aggiungiRisorsa(ItemRegistry.POLVERE_STELLARE);
+        alberoAntico.aggiungiRisorsa(ItemRegistry.POLVERE_STELLARE);
 
         grotta.aggiungiRisorsa(ItemRegistry.CRISTALLO_ARCANO);
+        grotta.aggiungiRisorsa(ItemRegistry.CRISTALLO_ARCANO);
+        grotta.aggiungiRisorsa(ItemRegistry.CRISTALLO_ARCANO);
+        grotta.aggiungiRisorsa(ItemRegistry.FUNGHI_SPETTRALI);
+        grotta.aggiungiRisorsa(ItemRegistry.FUNGHI_SPETTRALI);
 
         rovine.aggiungiRisorsa(ItemRegistry.LACRIMA_FENICE);
+        rovine.aggiungiRisorsa(ItemRegistry.LACRIMA_FENICE);
+        rovine.aggiungiRisorsa(ItemRegistry.LACRIMA_FENICE);
+        rovine.aggiungiRisorsa(ItemRegistry.LACRIMA_FENICE);
+        rovine.aggiungiRisorsa(ItemRegistry.CORNO_UNICORNO);
+        rovine.aggiungiRisorsa(ItemRegistry.CORNO_UNICORNO);
+
+        sentieroLupo.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
+        sentieroLupo.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
+        sentieroLupo.aggiungiRisorsa(ItemRegistry.ERBA_MAGICA);
 
         lagoLuna.aggiungiRisorsa(ItemRegistry.ESSENZA_DRAGO);
+        lagoLuna.aggiungiRisorsa(ItemRegistry.ESSENZA_DRAGO);
+        lagoLuna.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
+        lagoLuna.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
+        lagoLuna.aggiungiRisorsa(ItemRegistry.FIORE_LUNARE);
 
         // NEMICI
         radura.aggiungiNemico(new Enemy("Lupo Giovane", EnemyType.LUPO, 15, 4));

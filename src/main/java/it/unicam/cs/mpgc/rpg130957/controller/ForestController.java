@@ -29,9 +29,15 @@ public class ForestController {
         return posizione;
     }
 
+    public void setPosizione(ForestArea posizione) {
+        this.posizione = posizione;
+        this.posizione.rigeneraSeVuota();
+    }
+
     public boolean muovi(ForestArea destinazione) {
         if (posizione.getCollegamenti().contains(destinazione)) {
             posizione = destinazione;
+            posizione.rigeneraSeVuota();
             return true;
         }
         return false;

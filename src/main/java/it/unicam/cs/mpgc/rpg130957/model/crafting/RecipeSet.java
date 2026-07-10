@@ -14,7 +14,7 @@ public class RecipeSet {
     public static final Recipe ELISIR_SUPREMO_RICETTA;
 
     static {
-        // Pozione di Cura
+// Pozione di Cura
         Map<Ingredient, Integer> curaIng = new HashMap<>();
         curaIng.put(ItemRegistry.ERBA_MAGICA, 2);
         curaIng.put(ItemRegistry.FIORE_LUNARE, 1);
