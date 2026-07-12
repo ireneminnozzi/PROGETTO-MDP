@@ -1,6 +1,5 @@
 package it.unicam.cs.mpgc.rpg130957.model.quest;
 
-import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
 import it.unicam.cs.mpgc.rpg130957.model.skills.SkillSet;
 
@@ -22,8 +21,7 @@ public class QuestAvanzata {
         return obiettivi.stream().allMatch(QuestObjective::èCompletato);
     }
 
-    public void completa(Wallet wallet, Player player) {
-        wallet.aggiungiOro(ricompensaOro);
+    public void completa(Player player) {
         System.out.println("Quest completata! Hai ottenuto " + ricompensaOro + " oro.");
 
         switch (this.nome) {

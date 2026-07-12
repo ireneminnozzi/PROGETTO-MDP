@@ -8,10 +8,6 @@ public class ItemsRegistry {
 
     private static final Map<String, Item> items = new HashMap<>();
 
-    public static void register(Item item) {
-        items.put(item.getNome(), item);
-    }
-
     public static Item getByName(String nome) {
         return items.get(nome);
     }

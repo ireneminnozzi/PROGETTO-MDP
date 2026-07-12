@@ -5,8 +5,8 @@ public class Weapon extends AbstractItem {
 
     private int danno;
 
-    public Weapon(String nome, String descrizione, int prezzo, Rarity rarity, int danno) {
-        super(nome, descrizione, prezzo, rarity);
+    public Weapon(String nome, String descrizione,  Rarity rarity, int danno) {
+        super(nome, descrizione, rarity);
         this.danno = danno;
     }
 

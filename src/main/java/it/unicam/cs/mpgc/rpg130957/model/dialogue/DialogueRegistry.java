@@ -11,11 +11,5 @@ public class DialogueRegistry {
                     "Raccogli ciò che puoi, e preparati."
             ));
 
-// non utilizzato, per implementazioni future
 
-    public static final Dialogue DRAGO_FINALE =
-            new Dialogue("Drago Primordiale", List.of(
-                    "Hai osato disturbare il mio sonno millenario.",
-                    "Mostrami la tua forza, strega."
-            ));
 }

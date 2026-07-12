@@ -12,12 +12,12 @@ public class Inventario {
         ingredienti = new HashMap<>();
     }
 
-    // --- AGGIUNTA ---
+
     public void aggiungiIngrediente(Item item, int quantita) {
         ingredienti.put(item, ingredienti.getOrDefault(item, 0) + quantita);
     }
 
-    // --- RIMOZIONE ---
+
     public boolean rimuoviIngrediente(Item item, int quantita) {
         if (!ingredienti.containsKey(item)) return false;
         int attuale = ingredienti.get(item);
@@ -35,16 +35,11 @@ public class Inventario {
     }
 
 
-    // --- CONTROLLO ---
-    public boolean contiene(Item item) {
-        return ingredienti.containsKey(item);
-    }
-
     public int getQuantita(Item item) {
         return ingredienti.getOrDefault(item, 0);
     }
 
-    // --- ACCESSO COMPLETO ---
+
     public Map<Item, Integer> getTutti() {
         return ingredienti;
     }

@@ -3,7 +3,6 @@ package it.unicam.cs.mpgc.rpg130957.app;
 import it.unicam.cs.mpgc.rpg130957.controller.*;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
 import it.unicam.cs.mpgc.rpg130957.model.dialogue.*;
-import it.unicam.cs.mpgc.rpg130957.model.economy.*;
 import it.unicam.cs.mpgc.rpg130957.model.inventory.*;
 import it.unicam.cs.mpgc.rpg130957.model.magic.*;
 import it.unicam.cs.mpgc.rpg130957.model.player.*;
@@ -15,7 +14,6 @@ import it.unicam.cs.mpgc.rpg130957.model.skills.*;
 import it.unicam.cs.mpgc.rpg130957.persistence.*;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 

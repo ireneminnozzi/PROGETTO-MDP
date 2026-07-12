@@ -4,15 +4,13 @@ import java.util.Objects;
 
 public abstract class AbstractItem implements Item {
 
-    protected String nome;
-    protected String descrizione;
-    protected int prezzo;
-    protected Rarity rarity;
+    private String nome;
+    private String descrizione;
+    private Rarity rarity;
 
-    public AbstractItem(String nome, String descrizione, int prezzo, Rarity rarity) {
+    public AbstractItem(String nome, String descrizione,  Rarity rarity) {
         this.nome = nome;
         this.descrizione = descrizione;
-        this.prezzo = prezzo;
         this.rarity = rarity;
     }
 
@@ -21,19 +19,6 @@ public abstract class AbstractItem implements Item {
         return nome;
     }
 
-    public String getDescrizione() {
-        return descrizione;
-    }
-
-    @Override
-    public int getPrezzo() {
-        return prezzo;
-    }
-
-    @Override
-    public Rarity getRarity() {
-        return rarity;
-    }
 
     @Override
     public boolean equals(Object o) {

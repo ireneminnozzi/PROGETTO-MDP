@@ -1,7 +1,6 @@
 package it.unicam.cs.mpgc.rpg130957.model.quest;
 
 import it.unicam.cs.mpgc.rpg130957.model.inventory.Inventario;
-import it.unicam.cs.mpgc.rpg130957.model.economy.Wallet;
 import it.unicam.cs.mpgc.rpg130957.model.items.Item;
 import it.unicam.cs.mpgc.rpg130957.model.combat.EnemyType;
 import it.unicam.cs.mpgc.rpg130957.model.player.Player;
@@ -38,11 +37,11 @@ public class QuestManager {
                 .forEach(QuestObjective::avanza);
     }
 
-    public boolean completaQuest(Inventario inventario, Wallet wallet, Player player) {
+    public boolean completaQuest(Inventario inventario, Player player) {
         if (questAttiva == null) return false;
 
         if (questAttiva.èCompletata()) {
-            questAttiva.completa(wallet, player);
+            questAttiva.completa(player);
             questAttiva = null;
             return true;
         }

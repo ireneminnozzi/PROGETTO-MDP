@@ -19,7 +19,7 @@ public class RecipeBook {
 
     public static final Recipe RICETTA_MANA = new Recipe(
             Map.of(
-                    ItemRegistry.FIORE_LUNARE, 2,
+                    ItemRegistry.ESSENZA_DRAGO, 2,
                     ItemRegistry.FUNGHI_SPETTRALI, 1
             ),
             ItemRegistry.POZIONE_MANA
@@ -27,7 +27,7 @@ public class RecipeBook {
 
     public static final Recipe RICETTA_FORZA = new Recipe(
             Map.of(
-                    ItemRegistry.FIORE_LUNARE, 2,
+                    ItemRegistry.ESSENZA_DRAGO, 2,
                     ItemRegistry.CRISTALLO_ARCANO, 1
             ),
             ItemRegistry.POZIONE_FORZA
@@ -45,7 +45,7 @@ public class RecipeBook {
             Map.of(
                     ItemRegistry.CRISTALLO_ARCANO, 1,
                     ItemRegistry.ESSENZA_DRAGO, 2,
-                    ItemRegistry.FIORE_LUNARE, 1
+                    ItemRegistry.MANDRAGORA, 1
             ),
             ItemRegistry.ELISIR_SUPREMO
     );

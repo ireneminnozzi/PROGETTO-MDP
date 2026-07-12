@@ -13,8 +13,10 @@ public class ForestArea {
     private List<Enemy> nemici;
     private List<ForestArea> collegamenti;
 
-    // Modello originale dell'area: usato per far ricomparire erbe e mostri
-    // quando l'area si svuota (il giocatore la raccoglie/pulisce del tutto).
+/**
+ *  Modello originale dell'area: usato per far ricomparire erbe e mostri
+ * quando l'area si svuota (il giocatore la raccoglie/pulisce del tutto).
+ */
 
     private final List<Item> risorseIniziali = new ArrayList<>();
     private final List<Enemy> nemiciIniziali = new ArrayList<>();
@@ -59,12 +61,7 @@ public class ForestArea {
         }
     }
 
-    // ricostruire i nemici dal JSON
-    public void clearNemici() {
-        nemici.clear();
-    }
 
-    // per ricostruire il numero di nemici dal JSON
     public void setNemici(int count) {
         nemici.clear();
         for (int i = 0; i < count; i++) {

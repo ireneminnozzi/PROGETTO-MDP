@@ -4,7 +4,7 @@ package it.unicam.cs.mpgc.rpg130957.model.items;
 
 public class Potion extends AbstractItem {
 
-    public Potion(String nome, String descrizione, int prezzo, Rarity rarity) {
-        super(nome, descrizione, prezzo, rarity);
+    public Potion(String nome, String descrizione, Rarity rarity) {
+        super(nome, descrizione, rarity);
     }
 }

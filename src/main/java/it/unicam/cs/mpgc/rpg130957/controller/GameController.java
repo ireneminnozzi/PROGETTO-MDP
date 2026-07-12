@@ -4,7 +4,6 @@ import it.unicam.cs.mpgc.rpg130957.controller.*;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.*;
 import it.unicam.cs.mpgc.rpg130957.model.dialogue.*;
-import it.unicam.cs.mpgc.rpg130957.model.economy.*;
 import it.unicam.cs.mpgc.rpg130957.model.inventory.*;
 import it.unicam.cs.mpgc.rpg130957.model.magic.*;
 import it.unicam.cs.mpgc.rpg130957.model.player.*;
@@ -18,10 +17,8 @@ import it.unicam.cs.mpgc.rpg130957.persistence.*;
 public class GameController {
 
     private final Inventario inventario;
-    private final Wallet wallet;
     private final ForestMap mappa;
     private final ForestController forestController;
-    private final ShopController shopController;
     private final CraftingController craftingController;
     private final QuestManager questManager;
     private final Player player;
@@ -32,7 +29,6 @@ public class GameController {
 
         this.player = new Player("wiccan");
         this.inventario = new Inventario();
-        this.wallet = new Wallet(50);
         this.mappa = new ForestMap();
         this.questManager = new QuestManager();
 
@@ -43,7 +39,6 @@ public class GameController {
                 questManager
         );
 
-        this.shopController = new ShopController(inventario, wallet);
 
         this.craftingController = new CraftingController(
                 inventario,
@@ -118,16 +113,13 @@ public class GameController {
     }
 
     public boolean completaQuest() {
-        return questManager.completaQuest(inventario, wallet, player);
+        return questManager.completaQuest(inventario, player);
     }
 
     public Inventario getInventario() {
         return inventario;
     }
 
-    public Wallet getWallet() {
-        return wallet;
-    }
 
     public ForestMap getMappa() {
         return mappa;

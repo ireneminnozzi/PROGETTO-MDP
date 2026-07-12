@@ -33,6 +33,7 @@ public class Enemy {
     }
 
     /** Crea una copia dello stesso tipo di nemico, usata per farlo ricomparire. */
+
     public Enemy clona() {
         return new Enemy(nome, tipo, saluteMassima, attacco);
     }
