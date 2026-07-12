@@ -1,5 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.persistence;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -17,26 +19,26 @@ public class GameState {
         this.posizione = posizione;
     }
 
-    public Map<String, Integer> inventario;
+    public Map<String, Integer> inventario = new HashMap<>();
 
 
-    public List<String> abilitaSbloccate;
+    public List<String> abilitaSbloccate = new ArrayList<>();
 
 
     public String questAttiva;
-    public Map<String, Integer> progressoQuest;
+    public Map<String, Integer> progressoQuest = new HashMap<>();
 
 
     public boolean bossSconfitto;
 
 
-    public Map<String, Integer> nemiciPerArea;
+    public Map<String, Integer> nemiciPerArea = new HashMap<>();
 
 
-    public List<String> magieSbloccate;
+    public List<String> magieSbloccate = new ArrayList<>();
 
 
-    public List<String> ricetteSbloccate;
+    public List<String> ricetteSbloccate = new ArrayList<>();
 
     public GameState() {}
 

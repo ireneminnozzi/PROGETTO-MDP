@@ -9,6 +9,8 @@ public class GsonParser {
             GsonProvider.getGson().toJson(state, writer);
         } catch (IOException e) {
             System.err.println("Errore durante la scrittura: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Errore durante la serializzazione: " + e.getMessage());
         }
     }
 
@@ -17,6 +19,8 @@ public class GsonParser {
             return GsonProvider.getGson().fromJson(reader, GameState.class);
         } catch (IOException e) {
             System.err.println("Errore durante la lettura: " + e.getMessage());
+        } catch (RuntimeException e) {
+            System.err.println("Errore durante la lettura (file corrotto?): " + e.getMessage());
         }
         return null;
     }

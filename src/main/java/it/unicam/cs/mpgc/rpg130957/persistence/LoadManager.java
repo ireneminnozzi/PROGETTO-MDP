@@ -7,13 +7,13 @@ public class LoadManager {
 
     public static GameState carica() {
         try {
-            if (!Files.exists(Paths.get("save.json"))) {
+            if (!Files.exists(Paths.get(SaveManager.SAVE_FILE))) {
                 System.out.println("Nessun salvataggio trovato.");
                 return null;
             }
-            return GsonParser.read("save.json");
+            return GsonParser.read(SaveManager.SAVE_FILE);
         } catch (Exception e) {
-            System.out.println("Errore nel caricamento.");
+            System.out.println("Errore nel caricamento: " + e.getMessage());
             return null;
         }
     }

@@ -6,8 +6,7 @@ import com.google.gson.GsonBuilder;
 public class GsonProvider {
 
     private static final Gson gson = new GsonBuilder()
-            .registerTypeAdapter(GameState.class, new GameStateSerializer())
-            .registerTypeAdapter(GameState.class, new GameStateDeserializer())
+            .registerTypeAdapter(GameState.class, new GameStateAdapter())
             .setPrettyPrinting()
             .create();
 
