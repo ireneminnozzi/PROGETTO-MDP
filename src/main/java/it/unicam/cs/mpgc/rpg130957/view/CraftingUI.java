@@ -20,12 +20,12 @@ public class CraftingUI {
 
     public static void show(GameController game) {
         Stage stage = new Stage();
-        stage.setTitle("🧪 Banco delle pozioni");
+        stage.setTitle(" Banco delle pozioni");
 
         VBox root = new VBox(12);
         root.setPadding(new Insets(20));
 
-        Label titolo = new Label("🧪 Banco delle pozioni");
+        Label titolo = new Label(" Banco delle pozioni");
         root.getChildren().add(titolo);
 
         VBox listaRicette = new VBox(10);

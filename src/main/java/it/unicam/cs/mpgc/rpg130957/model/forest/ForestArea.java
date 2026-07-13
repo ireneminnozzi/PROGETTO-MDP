@@ -65,7 +65,7 @@ public class ForestArea {
     public void setNemici(int count) {
         nemici.clear();
         for (int i = 0; i < count; i++) {
-            nemici.add(new Enemy("Nemico", null, 10, 3)); // puoi personalizzarlo
+            nemici.add(new Enemy("Nemico", null, 10, 3));
         }
     }
 }

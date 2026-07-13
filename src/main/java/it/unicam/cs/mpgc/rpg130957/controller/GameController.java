@@ -1,9 +1,7 @@
 package it.unicam.cs.mpgc.rpg130957.controller;
 
-import it.unicam.cs.mpgc.rpg130957.controller.*;
 import it.unicam.cs.mpgc.rpg130957.model.combat.*;
 import it.unicam.cs.mpgc.rpg130957.model.crafting.*;
-import it.unicam.cs.mpgc.rpg130957.model.dialogue.*;
 import it.unicam.cs.mpgc.rpg130957.model.inventory.*;
 import it.unicam.cs.mpgc.rpg130957.model.magic.*;
 import it.unicam.cs.mpgc.rpg130957.model.player.*;
@@ -70,14 +68,6 @@ public class GameController {
 
     public boolean muovi(ForestArea destinazione) {
         return forestController.muovi(destinazione);
-    }
-
-    public boolean raccogli() {
-        return forestController.raccogliRisorsa();
-    }
-
-    public boolean combatti(Weapon arma) {
-        return forestController.combattiNemico(arma);
     }
 
     public Item getErbaDisponibile() {

@@ -31,7 +31,7 @@ public class CombatUI {
     private final GameController game;
     private final Player player;
     private final Enemy nemico;
-    private final Item erba;      // può essere null se il combattimento non è legato a un'erba
+    private final Item erba;
     private final Runnable onFine;
 
     private final Label logLabel = new Label();
@@ -224,7 +224,6 @@ public class CombatUI {
         if (onFine != null) onFine.run();
     }
 
-    /** Applica il messaggio del turno del giocatore, poi (se il nemico è vivo) fa contrattaccare il nemico. */
     private void risolviTurno(String messaggioGiocatore) {
         if (nemico.isSconfitto()) {
             aggiornaStato(messaggioGiocatore);
@@ -263,10 +262,9 @@ public class CombatUI {
         combattimentoFinito = true;
         disabilitaAzioni();
 
-        // La strega non muore: torna alla capanna esausta, ma il mostro resta lì ad attenderla.
         player.setSalute(Math.max(1, player.getSalute()));
 
-        logLabel.setText(logLabel.getText() + "\n\n💀 Sei stata sopraffatta! Torni sui tuoi passi per riprendere le forze.");
+        logLabel.setText(logLabel.getText() + "\n\n Sei stata sopraffatta! Torni a riprendere le forze.");
         mostraBottoneChiudi("Ritirati");
     }
 

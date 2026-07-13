@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Un solo adapter per serializzazione E deserializzazione di GameState.
+ * Un adapter per serializzazione e deserializzazione di GameState.
  */
 public class GameStateAdapter implements JsonSerializer<GameState>, JsonDeserializer<GameState> {
 

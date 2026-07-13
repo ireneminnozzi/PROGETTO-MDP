@@ -18,7 +18,6 @@ public class QuestObjective {
 
     private int progresso;
 
-    // Costruttore privato → usi i metodi statici per creare gli obiettivi
     private QuestObjective(String nome, Tipo tipo, Item itemRichiesto, EnemyType nemicoRichiesto, int quantitaRichiesta) {
         this.nome = nome;
         this.tipo = tipo;
@@ -28,18 +27,6 @@ public class QuestObjective {
         this.progresso = 0;
     }
 
-    // Obiettivo: raccogliere item
-    public static QuestObjective raccogli(Item item, int quantita) {
-        return new QuestObjective(
-                "Raccogli " + quantita + "x " + item.getNome(),
-                Tipo.RACCOGLI,
-                item,
-                null,
-                quantita
-        );
-    }
-
-    // Obiettivo: sconfiggere nemici
     public static QuestObjective sconfiggi(EnemyType tipoNemico, int quantita) {
         return new QuestObjective(
                 "Sconfiggi " + quantita + "x " + tipoNemico.name(),
@@ -50,7 +37,6 @@ public class QuestObjective {
         );
     }
 
-    // === GETTER NECESSARI PER QUESTAVANZATA ===
 
     public String getNome() {
         return nome;
@@ -76,17 +62,14 @@ public class QuestObjective {
         return nemicoRichiesto;
     }
 
-    // Serve per il caricamento JSON
     public void setProgresso(int valore) {
         this.progresso = valore;
     }
 
-    // Controllo completamento
     public boolean èCompletato() {
         return progresso >= quantitaRichiesta;
     }
 
-    // Incremento progresso (usato dal GameController)
     public void avanza() {
         progresso++;
     }

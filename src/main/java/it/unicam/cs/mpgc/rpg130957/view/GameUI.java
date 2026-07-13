@@ -15,7 +15,7 @@ public class GameUI extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("🌙 La Strega di Lunargento");
+        stage.setTitle("🌙 THE QUIET FOREST");
 
         MusicManager.getInstance().playLoop("musica_bosco.mp3");
 

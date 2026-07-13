@@ -43,35 +43,6 @@ public class ForestController {
         return false;
     }
 
-    public boolean raccogliRisorsa() {
-
-        if (posizione.getRisorse().isEmpty()) return false;
-
-        Item erba = posizione.getRisorse().get(0);
-
-        EnemyType guardiano = it.unicam.cs.mpgc.rpg130957.model.forest.HerbGuardians.getGuardiano(erba);
-
-        if (guardiano != null) {
-            Enemy nemico = posizione.getNemici().stream()
-                    .filter(e -> e.getTipo() == guardiano)
-                    .findFirst()
-                    .orElse(null);
-
-            if (nemico != null) {
-                boolean vinto = CombatSystem.combatti(nemico, it.unicam.cs.mpgc.rpg130957.model.items.ItemRegistry.BASTONE_MAGICO, player);
-                if (!vinto) return false;
-                posizione.getNemici().remove(nemico);
-                questManager.progressoCombattimento(nemico.getTipo());
-            }
-        }
-
-        posizione.getRisorse().remove(erba);
-        inventario.aggiungiIngrediente(erba, 1);
-        questManager.progressoRaccolta(erba);
-
-        return true;
-    }
-
     public Item getErbaDisponibile() {
         if (posizione.getRisorse().isEmpty()) return null;
         return posizione.getRisorse().get(0);
@@ -114,23 +85,6 @@ public class ForestController {
         ottieniLoot(nemico);
         player.guadagnaXP(20);
         questManager.progressoCombattimento(nemico.getTipo());
-    }
-
-    public boolean combattiNemico(Weapon arma) {
-        if (posizione.getNemici().isEmpty()) return false;
-
-        Enemy enemy = posizione.getNemici().get(0);
-
-        boolean vinto = CombatSystem.combatti(enemy, arma, player);
-
-        if (vinto) {
-            posizione.getNemici().remove(enemy);
-            ottieniLoot(enemy);
-            player.guadagnaXP(20);
-            questManager.progressoCombattimento(enemy.getTipo());
-        }
-
-        return vinto;
     }
 
     private void ottieniLoot(Enemy enemy) {

@@ -58,7 +58,6 @@ public final class SpriteRegistry {
             return carica("item_pozione.png");
         }
 
-        // Nessuno sprite dedicato ancora disponibile per questo item.
         return null;
     }
 
