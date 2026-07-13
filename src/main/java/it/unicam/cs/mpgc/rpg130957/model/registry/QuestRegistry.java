@@ -8,15 +8,8 @@ public class QuestRegistry {
 
     private static final Map<String, QuestAvanzata> quests = new HashMap<>();
 
-    public static void register(QuestAvanzata quest) {
-        quests.put(quest.getNome(), quest);
-    }
-
     public static QuestAvanzata getByName(String nome) {
         return quests.get(nome);
     }
 
-    public static Map<String, QuestAvanzata> getAll() {
-        return quests;
-    }
 }

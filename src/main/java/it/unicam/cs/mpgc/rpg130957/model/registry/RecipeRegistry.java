@@ -12,7 +12,4 @@ public class RecipeRegistry {
         return recipes.get(nome);
     }
 
-    public static Map<String, Recipe> getAll() {
-        return recipes;
-    }
 }

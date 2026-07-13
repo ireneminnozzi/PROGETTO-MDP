@@ -18,9 +18,4 @@ public class ForestRegistry {
     public static ForestArea getByName(String nome) {
         return areas.get(nome);
     }
-
-
-    public static Map<String, ForestArea> getAll() {
-        return areas;
-    }
 }

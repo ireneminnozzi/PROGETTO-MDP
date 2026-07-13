@@ -10,17 +10,6 @@ import java.util.Map;
 
 /**
  * Un solo adapter per serializzazione E deserializzazione di GameState.
- *
- * Prima c'erano due classi separate (GameStateSerializer e GameStateDeserializer)
- * entrambe registrate su GameState.class in GsonProvider: Gson però tiene un solo
- * adapter per tipo, quindi in scrittura il serializer veniva ignorato in silenzio
- * e si usava la reflection di default (funzionava "per caso" solo perché i nomi
- * dei campi coincidevano).
- *
- * In più, progressoQuest e nemiciPerArea ora vengono letti a mano (come già
- * succedeva per inventario) invece di passare "Map.class" grezzo a Gson: senza
- * i generics, Gson deserializza i numeri come Double, e un cast a Integer
- * lanciava ClassCastException a runtime.
  */
 public class GameStateAdapter implements JsonSerializer<GameState>, JsonDeserializer<GameState> {
 

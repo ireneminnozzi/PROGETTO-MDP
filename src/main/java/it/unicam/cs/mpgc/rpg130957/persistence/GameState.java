@@ -15,9 +15,7 @@ public class GameState {
     public int esperienza;
     public String posizione;
 
-    public void setPosizione(String posizione) {
-        this.posizione = posizione;
-    }
+
 
     public Map<String, Integer> inventario = new HashMap<>();
 

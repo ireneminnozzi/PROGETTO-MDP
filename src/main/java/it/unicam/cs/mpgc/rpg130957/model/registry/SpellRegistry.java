@@ -12,7 +12,4 @@ public class SpellRegistry {
         return spells.get(nome);
     }
 
-    public static Map<String, Spell> getAll() {
-        return spells;
-    }
 }

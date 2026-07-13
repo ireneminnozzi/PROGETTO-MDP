@@ -11,8 +11,4 @@ public class ItemsRegistry {
     public static Item getByName(String nome) {
         return items.get(nome);
     }
-
-    public static Map<String, Item> getAll() {
-        return items;
-    }
 }
